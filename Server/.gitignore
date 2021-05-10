@@ -1,0 +1,13 @@
+# IntelliJ
+*.iml
+.idea
+
+# Python
+__pycache__
+*.pyc
+
+# Visual Studio
+.vs
+.vscode
+*.sln
+*.vcxproj*
