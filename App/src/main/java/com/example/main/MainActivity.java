@@ -1,6 +1,8 @@
 package com.example.main;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,8 +28,15 @@ public class MainActivity extends AppCompatActivity {
         //Camera
         btnCam = (Button) findViewById(R.id.camera);
         btnCam.setText("Take a picture");
-
-
-
+        btnCam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openCamera();
+            }
+        });
+    }
+    public void openCamera(){
+        Intent intent = new Intent(this, Camera.class);
+        startActivity(intent);
     }
 }
