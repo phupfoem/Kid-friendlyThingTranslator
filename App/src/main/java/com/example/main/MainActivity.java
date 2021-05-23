@@ -10,7 +10,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.homelayout);
         //Favorite List
         btnFav = (Button) findViewById(R.id.favoriteslist);
         btnFav.setText("Favorites List");
