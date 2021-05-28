@@ -20,7 +20,7 @@
         android:layout_marginTop="180dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="30dp"
-        android:layout_marginBottom="230dp"
+        android:layout_marginBottom="250dp"
         android:background="@drawable/login_box"
         android:orientation="vertical">
         <TextView
@@ -30,14 +30,13 @@
             android:textSize="30dp"
             android:textColor="@color/black"
             android:layout_marginTop="8dp"
-
             android:layout_gravity="center">
 
         </TextView>
 
         <EditText
             android:layout_marginTop="40dp"
-            android:id="@+id/text1"
+            android:id="@+id/username"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -45,21 +44,35 @@
             android:hint="User name" />
         <EditText
             android:layout_marginTop="20dp"
-            android:id="@+id/text2"
+            android:id="@+id/password"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:drawableLeft="@drawable/ic_baseline_lock_24"
             android:hint="Password" />
-        
+
         <Button
+            android:id="@+id/login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            app:backgroundTint="@color/dim_blue" />
+            app:backgroundTint="@color/dim_blue"/>
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="520dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginRight="157dp"
+        android:layout_marginBottom="250dp"
+        app:backgroundTint="@color/dim_blue" />
 
 </RelativeLayout>
