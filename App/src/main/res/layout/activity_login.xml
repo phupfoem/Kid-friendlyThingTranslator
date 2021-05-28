@@ -30,16 +30,35 @@
             android:textSize="30dp"
             android:textColor="@color/black"
             android:layout_marginTop="8dp"
+
             android:layout_gravity="center">
 
         </TextView>
+
         <EditText
+            android:layout_marginTop="40dp"
             android:id="@+id/text1"
-            android:layout_gravity="center"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:hint="User name"
-             />
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_baseline_account_circle_24"
+            android:hint="User name" />
+        <EditText
+            android:layout_marginTop="20dp"
+            android:id="@+id/text2"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableLeft="@drawable/ic_baseline_lock_24"
+            android:hint="Password" />
+        
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            app:backgroundTint="@color/dim_blue" />
+
 
     </LinearLayout>
 
