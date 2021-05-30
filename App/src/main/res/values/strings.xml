@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">WhatIsThat</string>
-    <string name="loginHere">Already have an account?</string>
-    <string name="login"><u>Login</u></string>
-    <string name="title_activity_sign_up">SignUpActivity</string>
-
-</resources>
