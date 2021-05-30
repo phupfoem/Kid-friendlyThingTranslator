@@ -1,8 +1,8 @@
-com/example/main/BuildConfig.java
- com.example.main.BuildConfig
 com/example/main/Camera.java
  com.example.main.Camera
  com.example.main.Camera$1
 com/example/main/MainActivity.java
  com.example.main.MainActivity
  com.example.main.MainActivity$1
+com/example/main/BuildConfig.java
+ com.example.main.BuildConfig
