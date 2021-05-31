@@ -24,6 +24,12 @@ public class MainActivity extends AppCompatActivity {
         //History search
         btnHis = (Button) findViewById(R.id.historysearch);
         btnHis.setText("History Search");
+        btnHis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openHistory();
+            }
+        });
 
         //Camera
         btnCam = (Button) findViewById(R.id.camera);
@@ -37,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openCamera(){
         Intent intent = new Intent(this, Camera.class);
+        startActivity(intent);
+    }
+    public void openHistory(){
+        Intent intent = new Intent(this, HistoryActivity.class);
         startActivity(intent);
     }
 }

@@ -57,6 +57,11 @@ public class LoginActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 loginViewModel.loginDataChange(emailEditText.getText().toString(),
                         passwordEditText.getText().toString());
+                if (emailEditText.getText().toString().equals(passwordEditText.getText().toString())) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         };
         emailEditText.addTextChangedListener(afterTextChangedListener);

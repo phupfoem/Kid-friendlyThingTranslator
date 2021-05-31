@@ -1945,6 +1945,7 @@ int id linear 0x7f0800d1
 int id linearLayout 0x7f0800d2
 int id listMode 0x7f0800d3
 int id list_item 0x7f0800d4
+int id list_view1 0x7f0801b2
 int id login 0x7f0800d5
 int id logo 0x7f0800d6
 int id masked 0x7f0800d7
@@ -2245,6 +2246,7 @@ int layout design_navigation_menu 0x7f0b002b
 int layout design_navigation_menu_item 0x7f0b002c
 int layout design_text_input_end_icon 0x7f0b002d
 int layout design_text_input_start_icon 0x7f0b002e
+int layout history_layout 0x7f0b0072
 int layout homelayout 0x7f0b002f
 int layout material_chip_input_combo 0x7f0b0030
 int layout material_clock_display 0x7f0b0031
