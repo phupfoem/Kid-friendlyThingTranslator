@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Main</string>
+    <string name="app_name">WhatIsThat</string>
+    <string name="loginHere">Already have an account?</string>
+    <string name="signupHere">New around here?</string>
+    <string name="login"><u>Login</u></string>
+    <string name="signup"><u>Sign up</u></string>
+    <string name="title_activity_sign_up">SignUpActivity</string>
+
+    <string name="login_btn">LOG IN</string>
+    <string name="base_url">...</string>
 </resources>

@@ -28,7 +28,7 @@ def check_user(data: UserLoginSchema):
     my_cursor = my_db.cursor()
 
     sql = "SELECT username FROM Accounts WHERE username = %s AND password = %s"
-    param = (data.username, data.password)
+    param = (data.email, data.password)
 
     my_cursor.execute(sql, param)
     my_result = my_cursor.fetchone()
@@ -54,16 +54,16 @@ async def create_user(user: UserSchema = Body(...)):
     my_cursor = my_db.cursor()
 
     sql = "INSERT INTO Accounts VALUES (%s, %s)"
-    param = (user.username, user.password)
+    param = (user.email, user.password)
 
     my_cursor.execute(sql, param)
     my_cursor.commit()
 
-    return sign_jwt(user.username)
+    return sign_jwt(user.email)
 
 
 @app.post("/user/login", tags=["user"])
 async def user_login(user: UserLoginSchema = Body(...)):
     if check_user(user):
-        return sign_jwt(user.username)
+        return sign_jwt(user.email)
     raise HTTPException(status_code=401, detail="Wrong username/password.")
