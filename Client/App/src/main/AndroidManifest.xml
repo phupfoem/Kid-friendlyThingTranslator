@@ -27,6 +27,9 @@
             android:name=".Camera"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
+            android:name=".HistoryActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
     </application>
