@@ -19,12 +19,14 @@
             android:textAlignment="center"
             />
 
-        <ListView
+
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_marginTop="10dp"
-            android:id="@+id/list_view1"
+            android:id="@+id/recycler_view1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </ListView>
+            android:layout_height="match_parent"
+            >
+        </androidx.recyclerview.widget.RecyclerView>
 
 
 </LinearLayout>

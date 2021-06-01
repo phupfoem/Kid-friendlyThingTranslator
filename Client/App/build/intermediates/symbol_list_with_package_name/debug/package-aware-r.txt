@@ -1860,6 +1860,7 @@ id decelerate
 id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
+id delete_button
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -1931,6 +1932,9 @@ id info
 id invisible
 id inward
 id italic
+id item_description
+id item_image
+id item_name
 id item_touch_helper_previous_elevation
 id jumpToEnd
 id jumpToStart
@@ -1946,7 +1950,6 @@ id linear
 id linearLayout
 id listMode
 id list_item
-id list_view1
 id login
 id logo
 id masked
@@ -2039,6 +2042,7 @@ id radio
 id ratio
 id rectangles
 id recwords
+id recycler_view1
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2249,6 +2253,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout history_layout
 layout homelayout
+layout list_item
 layout material_chip_input_combo
 layout material_clock_display
 layout material_clock_display_divider

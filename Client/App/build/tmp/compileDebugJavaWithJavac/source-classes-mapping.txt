@@ -1,28 +1,24 @@
-com/example/main/data/remote/MainApiService.java
- com.example.main.data.remote.MainApiService
-com/example/main/viewmodel/LoginViewModel.java
- com.example.main.viewmodel.LoginViewModel
- com.example.main.viewmodel.LoginViewModel$1
-com/example/main/data/remote/MainApiUtils.java
- com.example.main.data.remote.MainApiUtils
 com/example/main/data/model/Result.java
  com.example.main.data.model.Result
  com.example.main.data.model.Result$1
  com.example.main.data.model.Result$Error
  com.example.main.data.model.Result$Success
-com/example/main/BuildConfig.java
- com.example.main.BuildConfig
-com/example/main/data/model/LoginDataState.java
- com.example.main.data.model.LoginDataState
-com/example/main/Camera.java
- com.example.main.Camera
- com.example.main.Camera$1
+com/example/main/viewmodel/LoginViewModel.java
+ com.example.main.viewmodel.LoginViewModel
+ com.example.main.viewmodel.LoginViewModel$1
+com/example/main/data/remote/MainApiUtils.java
+ com.example.main.data.remote.MainApiUtils
 com/example/main/HistoryActivity.java
  com.example.main.HistoryActivity
-com/example/main/MainActivity.java
- com.example.main.MainActivity
- com.example.main.MainActivity$1
- com.example.main.MainActivity$2
+com/example/main/HistoryAdapter.java
+ com.example.main.HistoryAdapter
+ com.example.main.HistoryAdapter$ViewHolder
+com/example/main/Item.java
+ com.example.main.Item
+com/example/main/BuildConfig.java
+ com.example.main.BuildConfig
+com/example/main/data/remote/MainApiService.java
+ com.example.main.data.remote.MainApiService
 com/example/main/LoginActivity.java
  com.example.main.LoginActivity
  com.example.main.LoginActivity$1
@@ -31,3 +27,12 @@ com/example/main/SignupActivity.java
  com.example.main.SignupActivity
  com.example.main.SignupActivity$1
  com.example.main.SignupActivity$2
+com/example/main/data/model/LoginDataState.java
+ com.example.main.data.model.LoginDataState
+com/example/main/Camera.java
+ com.example.main.Camera
+ com.example.main.Camera$1
+com/example/main/MainActivity.java
+ com.example.main.MainActivity
+ com.example.main.MainActivity$1
+ com.example.main.MainActivity$2

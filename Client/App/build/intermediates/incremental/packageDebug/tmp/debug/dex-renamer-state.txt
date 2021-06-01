@@ -1,4 +1,4 @@
-#Mon May 31 09:09:30 ICT 2021
-base.0=C\:\\Users\\Minh\\Desktop\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+#Tue Jun 01 16:37:52 ICT 2021
+base.0=D\:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex
