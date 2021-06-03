@@ -8,4 +8,7 @@
 
     <string name="login_btn">LOG IN</string>
     <string name="base_url">...</string>
+
+    <string name="textView">TextToSpeech</string>
+    <string name="textDes">TextToSpeech</string>
 </resources>

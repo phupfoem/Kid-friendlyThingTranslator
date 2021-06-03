@@ -16,6 +16,12 @@ public class MainActivity extends AppCompatActivity {
         //Favorite List
         btnFav = (Button) findViewById(R.id.favoriteslist);
         btnFav.setText("Favorites List");
+        btnFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTextToSpeech();
+            }
+        });
 
         //Rec words
         btnRec = (Button) findViewById(R.id.recwords);
@@ -47,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
     }
     public void openHistory(){
         Intent intent = new Intent(this, HistoryActivity.class);
+        startActivity(intent);
+    }
+    public void openTextToSpeech(){
+        Intent intent = new Intent(this, TextToSpeech.class);
         startActivity(intent);
     }
 }
