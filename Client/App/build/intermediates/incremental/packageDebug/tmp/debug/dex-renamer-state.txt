@@ -1,4 +1,16 @@
-#Tue Jun 01 16:37:52 ICT 2021
-base.0=D\:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-renamed.0=classes.dex
+#Thu Jun 03 17:28:40 ICT 2021
+path.4=7/classes.dex
+path.3=6/classes.dex
+path.2=10/classes.dex
+path.1=0/classes.dex
 path.0=classes.dex
+base.4=D\:\\ttcnpm\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+base.3=D\:\\ttcnpm\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
+base.2=D\:\\ttcnpm\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\10\\classes.dex
+base.1=D\:\\ttcnpm\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.0=D\:\\ttcnpm\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+renamed.3=classes4.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+renamed.4=classes5.dex

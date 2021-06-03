@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.example.main",
+  "applicationId": "com.example.sairamkrishna.main",
   "variantName": "debug",
   "elements": []
 }
