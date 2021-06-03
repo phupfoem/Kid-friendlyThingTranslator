@@ -29,11 +29,18 @@
             android:name=".Camera"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
+            android:name=".TextToSpeech"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity
             android:name=".HistoryActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
