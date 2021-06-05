@@ -23,6 +23,7 @@ public class HistoryActivity extends AppCompatActivity {
         ArrayList<Item> list_of_item = new ArrayList<Item>();
         String dir_str = "history";
         File dir = new File(this.getFilesDir().getAbsolutePath() + "/history");
+        setContentView(R.layout.history_layout);
         if (dir.exists()){
             try {
                 FileInputStream fis = new FileInputStream(dir);
@@ -36,15 +37,16 @@ public class HistoryActivity extends AppCompatActivity {
                 Log.e("exception 2", Log.getStackTraceString(e));
             }
 
+            simpleList = ((RecyclerView) this.findViewById(R.id.recycler_view1));
+            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+            simpleList.setLayoutManager(mLayoutManager);
+            HistoryAdapter adapter = new HistoryAdapter(list_of_item);
+            adapter.addContext(this);
+            simpleList.setAdapter(adapter);
         }
         else{
 
         }
-        setContentView(R.layout.history_layout);
-        simpleList = ((RecyclerView)this.findViewById(R.id.recycler_view1));
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-        simpleList.setLayoutManager(mLayoutManager);
-        HistoryAdapter adapter = new HistoryAdapter(list_of_item);
-        simpleList.setAdapter(adapter);
+
     }
 }

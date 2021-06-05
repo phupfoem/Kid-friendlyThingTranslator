@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\ttcnpm\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
+            "outputFile": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-port\\values-port.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Admin\\.gradle\\caches\\transforms-2\\files-2.1\\7160c6b9fdb2bc1e41d9bd715d01fdc2\\appcompat-1.3.0\\res\\values-port\\values-port.xml",
+                    "source": "C:\\Users\\AdMins\\.gradle\\caches\\transforms-2\\files-2.1\\7160c6b9fdb2bc1e41d9bd715d01fdc2\\appcompat-1.3.0\\res\\values-port\\values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

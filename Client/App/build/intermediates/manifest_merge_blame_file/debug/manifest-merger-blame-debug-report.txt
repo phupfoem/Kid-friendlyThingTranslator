@@ -1,105 +1,105 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-3    package="com.example.sairamkrishna.main"
+3    package="com.example.main"
 4    android:versionCode="1"
 5    android:versionName="1.0" >
 6
 7    <uses-sdk
 8        android:minSdkVersion="24"
-8-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml
+8-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="30" />
-9-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml
+9-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:4:5-67
-11-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:4:22-64
+11-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:4:5-67
+11-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:4:22-64
 12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-12-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:5:5-79
-12-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:5:22-76
+12-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:5:5-79
+12-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:5:22-76
 13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-13-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:6:5-81
-13-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:6:22-78
+13-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:6:5-81
+13-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:6:22-78
 14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-14-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:7:5-80
-14-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:7:22-77
+14-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:7:5-80
+14-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:7:22-77
 15
 16    <application
-16-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:8:5-44:19
+16-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:8:5-44:19
 17        android:allowBackup="true"
-17-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:9:9-35
+17-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:9:9-35
 18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-18-->[androidx.core:core:1.5.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\07adfc08fe16d3453ab9291511ec05fe\core-1.5.0\AndroidManifest.xml:24:18-86
+18-->[androidx.core:core:1.5.0] C:\Users\AdMins\.gradle\caches\transforms-2\files-2.1\07adfc08fe16d3453ab9291511ec05fe\core-1.5.0\AndroidManifest.xml:24:18-86
 19        android:debuggable="true"
 20        android:extractNativeLibs="false"
 21        android:icon="@mipmap/ic_launcher"
-21-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:10:9-43
+21-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:10:9-43
 22        android:label="@string/app_name"
-22-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:11:9-41
+22-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:11:9-41
 23        android:roundIcon="@mipmap/ic_launcher_round"
-23-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:12:9-54
+23-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:12:9-54
 24        android:supportsRtl="true"
-24-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:13:9-35
+24-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:13:9-35
 25        android:testOnly="true"
 26        android:theme="@style/Theme.Main" >
-26-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:14:9-42
+26-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:14:9-42
 27        <activity
-27-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:15:9-18:75
+27-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:15:9-18:75
 28            android:name="com.example.main.SignupActivity"
-28-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:16:13-43
+28-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:16:13-43
 29            android:label="@string/title_activity_sign_up"
-29-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:17:13-59
+29-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:17:13-59
 30            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
-30-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:18:13-72
+30-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:18:13-72
 31        <activity
-31-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:19:9-27:20
+31-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:19:9-27:20
 32            android:name="com.example.main.LoginActivity"
-32-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:20:13-42
+32-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:20:13-42
 33            android:label="@string/app_name"
-33-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:21:13-45
+33-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:21:13-45
 34            android:theme="@style/Theme.MaterialComponents.NoActionBar" >
-34-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:22:13-72
+34-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:22:13-72
 35            <intent-filter>
-35-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:23:13-26:29
+35-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:23:13-26:29
 36                <action android:name="android.intent.action.MAIN" />
-36-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:24:17-69
-36-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:24:25-66
+36-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:24:17-69
+36-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:24:25-66
 37
 38                <category android:name="android.intent.category.LAUNCHER" />
-38-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:25:17-77
-38-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:25:27-74
+38-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:25:17-77
+38-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:25:27-74
 39            </intent-filter>
 40        </activity>
 41        <activity
-41-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:28:9-30:75
+41-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:28:9-30:75
 42            android:name="com.example.main.Camera"
-42-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:29:13-35
+42-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:29:13-35
 43            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
-43-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:30:13-72
+43-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:30:13-72
 44        <activity
-44-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:31:9-33:75
+44-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:31:9-33:75
 45            android:name="com.example.main.TextToSpeech"
-45-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:32:13-41
+45-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:32:13-41
 46            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
-46-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:33:13-72
+46-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:33:13-72
 47        <activity
-47-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:34:9-36:75
+47-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:34:9-36:75
 48            android:name="com.example.main.HistoryActivity"
-48-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:35:13-44
+48-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:35:13-44
 49            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
-49-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:36:13-72
+49-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:36:13-72
 50        <activity
-50-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:37:9-39:75
+50-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:37:9-39:75
 51            android:name="com.example.main.MainActivity"
-51-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:38:13-41
+51-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:38:13-41
 52            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
-52-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:39:13-72
+52-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:39:13-72
 53
 54        <meta-data
-54-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:41:9-43:57
+54-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:41:9-43:57
 55            android:name="preloaded_fonts"
-55-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:42:13-43
+55-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:42:13-43
 56            android:resource="@array/preloaded_fonts" />
-56-->D:\ttcnpm\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:43:13-54
+56-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:43:13-54
 57    </application>
 58
 59</manifest>

@@ -1,11 +1,16 @@
 package com.example.main;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,12 +18,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
 
     private ArrayList<Item> items;
-
+    private Context context;
     public HistoryAdapter(ArrayList<Item> items) {
         this.items = items;
     }
@@ -38,6 +45,45 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         holder.name.setText(item.getName());
         holder.description.setText(item.getDescription());
         holder.image.setImageBitmap(StringToBitMap(item.getImage()));
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                alert.setTitle("Delete");
+                alert.setMessage("Are you sure you want to delete " + item.getName() + "?");
+                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        items.remove(position);
+                        try {
+                            String dir_str = "history";
+                            FileOutputStream fos = context.openFileOutput(dir_str, context.MODE_PRIVATE);
+                            ObjectOutputStream os = new ObjectOutputStream(fos);
+                            os.writeObject(items);
+                            os.close();
+                            fos.close();
+                        }
+                        catch(Exception e){
+                            Log.e("exception 1 in HistoryAdapter", Log.getStackTraceString(e));
+                        }
+                        notifyDataSetChanged();
+
+                        dialog.dismiss();
+                    }
+                });
+
+                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                alert.show();
+
+            }
+        });
     }
 
     @Override
@@ -54,6 +100,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         public final TextView name;
         public final TextView description;
         public final ImageView image;
+        public final Button delete;
 
         public ViewHolder(View view) {
             super(view);
@@ -61,7 +108,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             name = view.findViewById(R.id.item_name);
             description = view.findViewById(R.id.item_description);
             image = view.findViewById(R.id.item_image);
+            delete = view.findViewById(R.id.delete_button);
         }
+    }
+    public void addContext(Context context){
+        this.context = context;
     }
 
     public static String BitMapToString(Bitmap bitmap){
