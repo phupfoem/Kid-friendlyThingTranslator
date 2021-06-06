@@ -31,8 +31,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76f25bb2-58cb-4338-bc1a-12e4ce88eff9" name="Default Changelist" comment="add HistoryActivity to Manifest.xml">
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/data/model/SignupDataState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/data/model/UserSignupSchema.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/viewmodel/SignupViewModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/SignupActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/SignupActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/data/model/LoginDataState.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/data/model/LoginDataState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/data/remote/MainApiUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/data/remote/MainApiUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/viewmodel/LoginViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/viewmodel/LoginViewModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,8 +114,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.example.main" />
+      <recent name="com.example.main.data.model" />
       <recent name="com.example.main.viewmodel" />
+      <recent name="com.example.main" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Minh\Desktop\Kid-friendlyThingTranslator\Client\App\src\main\java\com\example\main\data\model" />
@@ -256,10 +264,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="added pass item to TextToSpeech" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="378" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1623008837729">
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1623021552991">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="378" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1623008837729" />
+    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1623021552991" />
     <state x="507" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1622416600859">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

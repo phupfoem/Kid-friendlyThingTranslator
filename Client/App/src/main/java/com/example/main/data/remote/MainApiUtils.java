@@ -1,6 +1,7 @@
 package com.example.main.data.remote;
 
 import com.example.main.data.model.UserLoginSchema;
+import com.example.main.data.model.UserSignupSchema;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
@@ -30,5 +31,9 @@ public class MainApiUtils {
 
     public Call<JsonObject> login(String email, String password) {
         return apiService.login(new UserLoginSchema(email, password));
+    }
+
+    public Call<JsonObject> signup(String name, String email, String password) {
+        return apiService.signup(new UserSignupSchema(email, password, name));
     }
 }

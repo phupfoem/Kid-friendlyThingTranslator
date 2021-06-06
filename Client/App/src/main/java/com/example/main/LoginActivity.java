@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // Check packet from server
-        loginViewModel.getLoginDataValid().observe(this, loginDataState -> {
+        loginViewModel.getDataValid().observe(this, loginDataState -> {
             if (loginDataState == null){
                 loginBtn.setEnabled(false);
                 return;
@@ -88,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        loginViewModel.getLoginResult().observe(this, result -> {
+        loginViewModel.getResult().observe(this, result -> {
             if (result instanceof Result.Error){
                 Toast.makeText(this, ((Result.Error) result).getError().getMessage(), Toast.LENGTH_SHORT).show();
                 loginBtn.setVisibility(View.VISIBLE);

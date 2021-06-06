@@ -9,34 +9,35 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class SignupActivity extends AppCompatActivity {
+import com.example.main.viewmodel.LoginViewModel;
 
-    EditText Name, Email, Password, Confirm;
-    Button btnSignUp;
-    TextView textViewLogin;
+public class SignupActivity extends AppCompatActivity {
+    LoginViewModel loginViewModel;
+
+    private EditText nameEditText;
+    private EditText emailEditText;
+    private EditText passwordEditText;
+    private EditText passwordConfirmEditText;
+
+    private TextView loginBtn;
+    private Button signupBtn;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        btnSignUp = (Button) findViewById(R.id.btnSignUp);
-        textViewLogin = (TextView)findViewById(R.id.login);
-        Name = (EditText)findViewById(R.id.textNameSignUp);
-        Password = (EditText)findViewById(R.id.textPasswordSignUp);
-        Email = (EditText)findViewById(R.id.textEmailSignUp);
-        Confirm = (EditText)findViewById(R.id.textPasswordRetypeSignUp);
+        signupBtn = (Button) findViewById(R.id.btnSignUp);
+        loginBtn = (TextView)findViewById(R.id.login);
+        nameEditText = (EditText)findViewById(R.id.textNameSignUp);
+        passwordEditText = (EditText)findViewById(R.id.textPasswordSignUp);
+        emailEditText = (EditText)findViewById(R.id.textEmailSignUp);
+        passwordConfirmEditText = (EditText)findViewById(R.id.textPasswordRetypeSignUp);
 
 
         //Go back to Log in Page
-
-        textViewLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
+        loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
@@ -44,39 +45,12 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-
+        signupBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginViewModel.login(emailEditText.getText().toString(),
+                        passwordEditText.getText().toString());
+            }
+        });
     }
-//    private Boolean validateName(){
-//        String val = Name.getText().toString();
-//        if (val.isEmpty()){
-//            Name.setError("Field cannot be empty");
-//            return false;
-//
-//        } else{
-//            Name.setError(null);
-//            return true;
-//        }
-//    }
-//    private Boolean validateEmail(){
-//        String val = Email.getText().toString();
-//        if (val.isEmpty()){
-//            Email.setError("Field cannot be empty");
-//            return false;
-//        }else{
-//            Email.setError(null);
-//            return true;
-//        }
-//    }
-//    private Boolean validatePassword(){
-//        String val = Password.getText().toString();
-//        if (val.isEmpty()){
-//            Password.setError("Field cannot be empty");
-//            return false;
-//
-//        }else{
-//            Password.setError(null);
-//            return true;
-//        }
-//    }
-
 }

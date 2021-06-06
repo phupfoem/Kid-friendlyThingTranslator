@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.main.data.model.LoginDataState;
 import com.example.main.data.model.Result;
+import com.example.main.data.model.SignupDataState;
 import com.example.main.data.remote.MainApiUtils;
 import com.google.gson.JsonObject;
 
@@ -14,35 +15,43 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginViewModel extends ViewModel {
+public class SignupViewModel extends ViewModel {
+    public final String NAME_ERROR_MSG = "Invalid person name";
     public final String EMAIL_ERROR_MSG = "Invalid email";
     public final String PASSWORD_ERROR_MSG = "Invalid password";
+    public final String PASSWORD_CONFIRM_ERROR_MSG = "Passwords mismatched";
 
     @NonNull
-    private final MutableLiveData<LoginDataState> dataState = new MutableLiveData<>();
+    private final MutableLiveData<SignupDataState> dataState = new MutableLiveData<>();
 
     private final MutableLiveData<Result<String>> result = new MutableLiveData<>();
     private final MainApiUtils mainApiUtils = MainApiUtils.getInstance();
 
-    public void loginDataChange(String email, String password) {
-        if (!isEmailValid(email)) {
-            dataState.setValue(new LoginDataState(EMAIL_ERROR_MSG, null));
+    public void signupDataChange(String name, String email, String password, String passwordConfirm) {
+        if (!isNameValid(name)) {
+            dataState.setValue(new SignupDataState(NAME_ERROR_MSG, null, null, null));
+        }
+        else if (!isEmailValid(email)) {
+            dataState.setValue(new SignupDataState(null, EMAIL_ERROR_MSG, null, null));
         }
         else if (!isPasswordValid(password)) {
-            dataState.setValue(new LoginDataState(null, PASSWORD_ERROR_MSG));
+            dataState.setValue(new SignupDataState(null, null, PASSWORD_ERROR_MSG, null));
+        }
+        else if (!isPasswordConfirmValid(password, passwordConfirm)) {
+            dataState.setValue(new SignupDataState(null, null, null, PASSWORD_CONFIRM_ERROR_MSG));
         }
         else {
-            dataState.setValue(new LoginDataState(true));
+            dataState.setValue(new SignupDataState(true));
         }
     }
 
-    public void login(String email, String password) {
-        Call<JsonObject> call = mainApiUtils.login(email, password);
+    public void signup(String name, String email, String password) {
+        Call<JsonObject> call = mainApiUtils.signup(name, email, password);
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 if (response.code() == 200) {
-                    result.postValue(new Result.Success<>(response.body() == null? "???": response.body().get("name").toString()));
+                    result.postValue(new Result.Success<>(response.body() == null? "???": response.body().get("message").toString()));
                 }
                 else {
                     result.postValue(new Result.Error(new Exception(response.body() == null ? "Error encountered. Please try again!" : response.body().get("message").toString())));
@@ -59,12 +68,18 @@ public class LoginViewModel extends ViewModel {
     }
 
     @NonNull
-    public LiveData<LoginDataState> getDataValid() {
+    public LiveData<SignupDataState> getDataValid() {
         return dataState;
     }
 
     public LiveData<Result<String>> getResult() {
         return result;
+    }
+
+
+    private boolean isNameValid(String name) {
+        final String name_regex = "^[\\w-.']( [\\w-.'])*$";
+        return name != null && name.matches(name_regex);
     }
 
     private boolean isEmailValid(String email) {
@@ -74,5 +89,9 @@ public class LoginViewModel extends ViewModel {
 
     private boolean isPasswordValid(String password) {
         return password != null && password.length() >= 8;
+    }
+
+    private boolean isPasswordConfirmValid(String password, String passwordConfirm) {
+        return password.equals(passwordConfirm);
     }
 }
