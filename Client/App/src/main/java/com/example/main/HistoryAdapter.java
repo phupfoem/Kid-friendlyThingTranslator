@@ -3,6 +3,7 @@ package com.example.main;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -84,6 +86,15 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
             }
         });
+        holder.linearLayout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(context, TextToSpeech.class);
+                intent.putExtra("item",item);
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -101,6 +112,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         public final TextView description;
         public final ImageView image;
         public final Button delete;
+        public final LinearLayout linearLayout;
 
         public ViewHolder(View view) {
             super(view);
@@ -109,6 +121,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             description = view.findViewById(R.id.item_description);
             image = view.findViewById(R.id.item_image);
             delete = view.findViewById(R.id.delete_button);
+            linearLayout = view.findViewById(R.id.item_layout);
         }
     }
     public void addContext(Context context){
