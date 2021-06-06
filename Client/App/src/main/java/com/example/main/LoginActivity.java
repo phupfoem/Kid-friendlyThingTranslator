@@ -103,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        // Get sign up button
+        // Get sign up button, on click, go to sign-up activity
         signupBtn = (TextView) findViewById(R.id.signup);
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
