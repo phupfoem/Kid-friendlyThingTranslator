@@ -23,7 +23,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordEditText;
 
     private Button loginBtn;
-
     private TextView signupBtn;
 
 
@@ -41,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordEditText = (EditText) findViewById(R.id.password);
 
         // Add  listener
-        TextWatcher afterTextChangedListener = new TextWatcher(){
+        TextWatcher afterTextChangedListener = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
