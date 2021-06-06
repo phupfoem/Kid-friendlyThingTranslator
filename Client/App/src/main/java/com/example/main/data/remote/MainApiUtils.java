@@ -1,7 +1,6 @@
 package com.example.main.data.remote;
 
-import androidx.annotation.NonNull;
-
+import com.example.main.data.model.UserLoginSchema;
 import com.google.gson.JsonObject;
 
 import retrofit2.Call;
@@ -10,8 +9,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainApiUtils {
     private MainApiUtils(){}
-    public static final String BASE_URL = "http://192.168.1.11:8000"; //Resources.getSystem().getString(R.string.base_url);
-    private static MainApiService apiService = new Retrofit.Builder()
+    public static final String BASE_URL = "http://192.168.1.11:8000/"; //Resources.getSystem().getString(R.string.base_url);
+    private static final MainApiService apiService = new Retrofit.Builder()
                                             .baseUrl(BASE_URL)
                                             .addConverterFactory(GsonConverterFactory.create())
                                             .build()
@@ -28,7 +27,8 @@ public class MainApiUtils {
         }
         return instance;
     }
-    public Call<JsonObject> login(@NonNull String email, @NonNull String password){
-        return apiService.login(email, password);
+
+    public Call<JsonObject> login(String email, String password) {
+        return apiService.login(new UserLoginSchema(email, password));
     }
 }

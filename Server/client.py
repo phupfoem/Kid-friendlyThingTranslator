@@ -5,13 +5,13 @@ import decouple
 
 if __name__ == "__main__":
     while True:
-        username = input()
+        email = input()
         password = input()
 
-        base_url = "http://" + decouple.config('host') + ":8000"
+        base_url = "http://" + decouple.config('server_ip') + ":8000"
         url = base_url + '/user/login'
         json = {
-            'username': username,
+            'email': email,
             'password': password
         }
         request = requests.post(url, json=json).json()
@@ -28,7 +28,7 @@ if __name__ == "__main__":
         except KeyError:
             while True:
                 headers = {"Authorization": "Bearer " + "ABC"}
-                print(requests.post(base_url, headers=headers).json())
+                print(requests.post(base_url, data="phu", headers=headers).json())
 
                 if input() == 'q':
                     break

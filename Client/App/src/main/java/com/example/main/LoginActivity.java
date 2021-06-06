@@ -37,31 +37,21 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
         // Get email and password edit text
-        emailEditText = (EditText) findViewById(R.id.username);
+        emailEditText = (EditText) findViewById(R.id.email);
         passwordEditText = (EditText) findViewById(R.id.password);
 
         // Add  listener
         TextWatcher afterTextChangedListener = new TextWatcher(){
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
 
             @Override
             public void afterTextChanged(Editable s) {
                 loginViewModel.loginDataChange(emailEditText.getText().toString(),
                         passwordEditText.getText().toString());
-                if (emailEditText.getText().toString().equals(passwordEditText.getText().toString())) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
             }
         };
         emailEditText.addTextChangedListener(afterTextChangedListener);
@@ -69,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // Get login button and login logic
-        loginBtn =(Button) findViewById(R.id.login);
+        loginBtn = (Button)findViewById(R.id.login);
         loginBtn.setText(getString(R.string.login_btn));
         loginBtn.setOnClickListener(v -> {
             loginViewModel.login(emailEditText.getText().toString(),
@@ -83,22 +73,30 @@ public class LoginActivity extends AppCompatActivity {
                 loginBtn.setEnabled(false);
                 return;
             }
-            if (loginDataState.getUsernameError() != null){
-                emailEditText.setError(loginDataState.getUsernameError());
+
+            if (loginDataState.getEmailError() != null || loginDataState.getPasswordError() != null) {
+                if (loginDataState.getEmailError() != null) {
+                    emailEditText.setError(loginDataState.getEmailError());
+                }
+                else {
+                    passwordEditText.setError(loginDataState.getPasswordError());
+                }
+
+                loginBtn.setEnabled(false);
             }
-            else if (loginDataState.getPasswordError() != null){
-                passwordEditText.setError(loginDataState.getPasswordError());
-            }
-            else{
+            else {
                 loginBtn.setEnabled(true);
             }
         });
-        loginViewModel.getLoginResult().observe(this, result ->{
+
+        loginViewModel.getLoginResult().observe(this, result -> {
             if (result instanceof Result.Error){
                 Toast.makeText(this, ((Result.Error) result).getError().getMessage(), Toast.LENGTH_SHORT).show();
                 loginBtn.setVisibility(View.VISIBLE);
             }
-            else{
+            else if (result instanceof Result.Success) {
+                Toast.makeText(this, ((Result.Success) result).getData().toString(), Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();

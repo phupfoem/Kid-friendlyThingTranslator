@@ -11,6 +11,12 @@ import mysql.connector
 import decouple
 
 import os
+from typing import Any, AnyStr, Dict, List, Union, Optional
+
+
+JSONObject = Dict[AnyStr, Any]
+JSONArray = List[Any]
+JSONStructure = Union[JSONArray, JSONObject]
 
 
 app = FastAPI()
@@ -36,20 +42,32 @@ def check_user(data: UserLoginSchema):
     return my_result is not None
 
 
+def get_user_name(data: UserLoginSchema):
+    my_cursor = my_db.cursor()
+
+    sql = "SELECT name FROM Accounts WHERE username = %s AND password = %s"
+    param = (data.email, data.password)
+
+    my_cursor.execute(sql, param)
+    my_result = my_cursor.fetchone()[0]
+
+    return my_result
+
+
 # route handlers
-@app.get("/", tags=["root"])
+@app.get("/")
 async def read_root() -> dict:
     return {"message": "Welcome!."}
 
 
-@app.post("/", dependencies=[Depends(JWTBearer())], tags=["root"])
-async def add_sth(sth: str) -> dict:
+@app.post("/", dependencies=[Depends(JWTBearer())])
+async def add_sth() -> dict:
     return {
-        "data": sth
+        "data": "Nothing"
     }
 
 
-@app.post("/user/signup", tags=["user"])
+@app.post("/user/signup")
 async def create_user(user: UserSchema = Body(...)):
     my_cursor = my_db.cursor()
 
@@ -62,8 +80,8 @@ async def create_user(user: UserSchema = Body(...)):
     return sign_jwt(user.email)
 
 
-@app.post("/user/login", tags=["user"])
-async def user_login(user: UserLoginSchema = Body(...)):
+@app.post("/user/login")
+async def user_login_body(user: UserLoginSchema = Body(...)) -> dict:
     if check_user(user):
-        return sign_jwt(user.email)
-    raise HTTPException(status_code=401, detail="Wrong username/password.")
+        return sign_jwt(user.email) | {'name': get_user_name(user)}
+    raise HTTPException(status_code=401, detail="Wrong email/password.")

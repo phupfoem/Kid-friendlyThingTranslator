@@ -7,7 +7,7 @@
     <string name="title_activity_sign_up">SignUpActivity</string>
 
     <string name="login_btn">LOG IN</string>
-    <string name="base_url">...</string>
+    <string name="login_error_msg">Error encountered. Please try again!</string>
 
     <string name="textView">TextToSpeech</string>
     <string name="textDes">TextToSpeech</string>

@@ -4,16 +4,16 @@ import decouple
 
 
 if __name__ == "__main__":
-    my_db = mysql.connector.connect(
-        host=decouple.config('host'),
-        user=decouple.config('user'),
-        password=decouple.config('password')
-    )
-
-    my_cursor = my_db.cursor()
-
-    sql = """create database USER"""
-    my_cursor.execute(sql)
+    # my_db = mysql.connector.connect(
+    #     host=decouple.config('host'),
+    #     user=decouple.config('user'),
+    #     password=decouple.config('password')
+    # )
+    #
+    # my_cursor = my_db.cursor()
+    #
+    # sql = """create database USER"""
+    # my_cursor.execute(sql)
 
     my_db = mysql.connector.connect(
         host=decouple.config('host'),
@@ -26,7 +26,8 @@ if __name__ == "__main__":
 
     sql = """create table Accounts(
                 username varchar(128) not null,
-                password varchar(128) not null)"""
+                password varchar(128) not null,
+                name varchar(128) not null)"""
     my_cursor.execute(sql)
 
     sql = """create unique index Accounts_username_uindex
@@ -38,8 +39,7 @@ if __name__ == "__main__":
                     primary key (username)"""
     my_cursor.execute(sql)
 
-    sql = """insert into Accounts (username, password) values
-                ('admin', 'admin'),
-                ('user', 'pass')"""
+    sql = """insert into Accounts (username, password, name) values
+                ('phu@phu.com', 'pass1234', 'Pfoem')"""
     my_cursor.execute(sql)
     my_db.commit()
