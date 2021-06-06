@@ -15,11 +15,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
@@ -47,6 +49,59 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         holder.name.setText(item.getName());
         holder.description.setText(item.getDescription());
         holder.image.setImageBitmap(StringToBitMap(item.getImage()));
+        if(item.getFavorite() == false){
+            holder.favorite.setText("Favorite");
+            holder.favorite.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    items.get(position).setFavorite(true);
+                    String dir_str = "history";
+                    File dir = new File(context.getFilesDir().getAbsolutePath() + "/history");
+                    if(dir.exists()) {
+                        try {
+                            FileOutputStream fos = context.openFileOutput(dir_str, context.MODE_PRIVATE);
+                            ObjectOutputStream os = new ObjectOutputStream(fos);
+                            os.writeObject(items);
+                            os.close();
+                            fos.close();
+                        } catch (Exception e) {
+                            Log.e("exception 1 in HistoryAdapter", Log.getStackTraceString(e));
+                        }
+                    }
+                    else{
+                        Toast.makeText(context,"someone delete history in HistoryAdapter",Toast.LENGTH_LONG).show();
+                    }
+                    notifyDataSetChanged();
+                }
+            });
+        }
+        else{
+            holder.favorite.setText("Unfavorite");
+            holder.favorite.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    items.get(position).setFavorite(false);
+                    String dir_str = "history";
+                    File dir = new File(context.getFilesDir().getAbsolutePath() + "/history");
+                    if(dir.exists()) {
+                        try {
+                            FileOutputStream fos = context.openFileOutput(dir_str, context.MODE_PRIVATE);
+                            ObjectOutputStream os = new ObjectOutputStream(fos);
+                            os.writeObject(items);
+                            os.close();
+                            fos.close();
+                        } catch (Exception e) {
+                            Log.e("exception 1 in HistoryAdapter", Log.getStackTraceString(e));
+                        }
+                    }
+                    else{
+                        Toast.makeText(context,"someone delete history in HistoryAdapter",Toast.LENGTH_LONG).show();
+                    }
+                    notifyDataSetChanged();
+                }
+            });
+        }
+
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +166,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         public final TextView name;
         public final TextView description;
         public final ImageView image;
+        public final Button favorite;
         public final Button delete;
         public final LinearLayout linearLayout;
 
@@ -120,6 +176,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             name = view.findViewById(R.id.item_name);
             description = view.findViewById(R.id.item_description);
             image = view.findViewById(R.id.item_image);
+            favorite = view.findViewById(R.id.favorite_button);
             delete = view.findViewById(R.id.delete_button);
             linearLayout = view.findViewById(R.id.item_layout);
         }

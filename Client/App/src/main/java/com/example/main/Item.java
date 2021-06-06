@@ -48,4 +48,17 @@ public class Item implements Serializable {
         this.isFavorite = isFavorite;
     }
 
+    public boolean equals(Item other) {
+        if (!(other instanceof Item)) {
+            return false;
+        }
+
+        Item that = (Item) other;
+
+        // Custom equality check here.
+        return this.image.equals(that.image)
+                && this.name.equals(that.name)
+                    && this.description.equals(that.description)
+                        && this.isFavorite.equals(that.isFavorite);
+    }
 }

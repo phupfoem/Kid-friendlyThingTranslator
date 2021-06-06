@@ -24,7 +24,7 @@
 14-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:7:22-77
 15
 16    <application
-16-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:8:5-44:19
+16-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:8:5-47:19
 17        android:allowBackup="true"
 17-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:9:9-35
 18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -89,17 +89,23 @@
 49-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:36:13-72
 50        <activity
 50-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:37:9-39:75
-51            android:name="com.example.main.MainActivity"
-51-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:38:13-41
+51            android:name="com.example.main.FavoriteActivity"
+51-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:38:13-45
 52            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
 52-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:39:13-72
-53
-54        <meta-data
-54-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:41:9-43:57
-55            android:name="preloaded_fonts"
-55-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:42:13-43
-56            android:resource="@array/preloaded_fonts" />
-56-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:43:13-54
-57    </application>
-58
-59</manifest>
+53        <activity
+53-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:40:9-42:75
+54            android:name="com.example.main.MainActivity"
+54-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:41:13-41
+55            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+55-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:42:13-72
+56
+57        <meta-data
+57-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:44:9-46:57
+58            android:name="preloaded_fonts"
+58-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:45:13-43
+59            android:resource="@array/preloaded_fonts" />
+59-->D:\gitProjects2\Kid-friendlyThingTranslator\Client\app\src\main\AndroidManifest.xml:46:13-54
+60    </application>
+61
+62</manifest>

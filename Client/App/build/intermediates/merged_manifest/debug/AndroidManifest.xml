@@ -48,6 +48,9 @@
             android:name="com.example.main.HistoryActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
+            android:name="com.example.main.FavoriteActivity"
+            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+        <activity
             android:name="com.example.main.MainActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
 

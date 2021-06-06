@@ -8,16 +8,16 @@
         "source": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\res\\merged\\debug\\layout_history_layout.xml.flat",
-        "source": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\src\\main\\res\\layout\\history_layout.xml"
+        "merged": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_signup.xml.flat",
+        "source": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\src\\main\\res\\layout\\activity_signup.xml"
     },
     {
         "merged": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\res\\merged\\debug\\drawable_duongvien_goctron.xml.flat",
         "source": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\src\\main\\res\\drawable\\duongvien_goctron.xml"
     },
     {
-        "merged": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_signup.xml.flat",
-        "source": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\src\\main\\res\\layout\\activity_signup.xml"
+        "merged": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\res\\merged\\debug\\layout_history_layout.xml.flat",
+        "source": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\src\\main\\res\\layout\\history_layout.xml"
     },
     {
         "merged": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\res\\merged\\debug\\drawable_edittext.xml.flat",
@@ -122,6 +122,10 @@
     {
         "merged": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
         "source": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\res\\merged\\debug\\layout_favorite_layout.xml.flat",
+        "source": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\src\\main\\res\\layout\\favorite_layout.xml"
     },
     {
         "merged": "D:\\gitProjects2\\Kid-friendlyThingTranslator\\Client\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",

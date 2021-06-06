@@ -1,28 +1,29 @@
-com/example/main/Camera.java
- com.example.main.Camera
- com.example.main.Camera$1
+com/example/main/data/remote/MainApiService.java
+ com.example.main.data.remote.MainApiService
 com/example/main/viewmodel/LoginViewModel.java
  com.example.main.viewmodel.LoginViewModel
  com.example.main.viewmodel.LoginViewModel$1
 com/example/main/data/remote/MainApiUtils.java
  com.example.main.data.remote.MainApiUtils
-com/example/main/MainActivity.java
- com.example.main.MainActivity
- com.example.main.MainActivity$1
- com.example.main.MainActivity$2
- com.example.main.MainActivity$3
-com/example/main/HistoryAdapter.java
- com.example.main.HistoryAdapter
- com.example.main.HistoryAdapter$1
- com.example.main.HistoryAdapter$1$1
- com.example.main.HistoryAdapter$1$2
- com.example.main.HistoryAdapter$ViewHolder
-com/example/main/Item.java
- com.example.main.Item
+com/example/main/data/model/LoginDataState.java
+ com.example.main.data.model.LoginDataState
+com/example/main/data/model/Result.java
+ com.example.main.data.model.Result
+ com.example.main.data.model.Result$1
+ com.example.main.data.model.Result$Error
+ com.example.main.data.model.Result$Success
 com/example/main/BuildConfig.java
  com.example.main.BuildConfig
-com/example/main/data/remote/MainApiService.java
- com.example.main.data.remote.MainApiService
+com/example/main/Item.java
+ com.example.main.Item
+com/example/main/Camera.java
+ com.example.main.Camera
+ com.example.main.Camera$1
+com/example/main/TextToSpeech.java
+ com.example.main.TextToSpeech
+ com.example.main.TextToSpeech$1
+ com.example.main.TextToSpeech$2
+ com.example.main.TextToSpeech$3
 com/example/main/LoginActivity.java
  com.example.main.LoginActivity
  com.example.main.LoginActivity$1
@@ -31,17 +32,31 @@ com/example/main/SignupActivity.java
  com.example.main.SignupActivity
  com.example.main.SignupActivity$1
  com.example.main.SignupActivity$2
-com/example/main/data/model/LoginDataState.java
- com.example.main.data.model.LoginDataState
+com/example/main/MainActivity.java
+ com.example.main.MainActivity
+ com.example.main.MainActivity$1
+ com.example.main.MainActivity$2
+ com.example.main.MainActivity$3
+com/example/main/FavoriteAdapter.java
+ com.example.main.FavoriteAdapter
+ com.example.main.FavoriteAdapter$1
+ com.example.main.FavoriteAdapter$1$1
+ com.example.main.FavoriteAdapter$1$2
+ com.example.main.FavoriteAdapter$2
+ com.example.main.FavoriteAdapter$2$1
+ com.example.main.FavoriteAdapter$2$2
+ com.example.main.FavoriteAdapter$3
+ com.example.main.FavoriteAdapter$ViewHolder
+com/example/main/FavoriteActivity.java
+ com.example.main.FavoriteActivity
 com/example/main/HistoryActivity.java
  com.example.main.HistoryActivity
-com/example/main/TextToSpeech.java
- com.example.main.TextToSpeech
- com.example.main.TextToSpeech$1
- com.example.main.TextToSpeech$2
- com.example.main.TextToSpeech$3
-com/example/main/data/model/Result.java
- com.example.main.data.model.Result
- com.example.main.data.model.Result$1
- com.example.main.data.model.Result$Error
- com.example.main.data.model.Result$Success
+com/example/main/HistoryAdapter.java
+ com.example.main.HistoryAdapter
+ com.example.main.HistoryAdapter$1
+ com.example.main.HistoryAdapter$2
+ com.example.main.HistoryAdapter$3
+ com.example.main.HistoryAdapter$3$1
+ com.example.main.HistoryAdapter$3$2
+ com.example.main.HistoryAdapter$4
+ com.example.main.HistoryAdapter$ViewHolder

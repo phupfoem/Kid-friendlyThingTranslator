@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         btnFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openTextToSpeech();
+                openFavorite();
             }
         });
 
@@ -55,8 +55,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HistoryActivity.class);
         startActivity(intent);
     }
-    public void openTextToSpeech(){
-        Intent intent = new Intent(this, TextToSpeech.class);
+    public void openFavorite(){
+        Intent intent = new Intent(this, FavoriteActivity.class);
         startActivity(intent);
     }
 }

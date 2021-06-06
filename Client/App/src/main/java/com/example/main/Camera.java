@@ -91,7 +91,7 @@ public class Camera extends AppCompatActivity {
                     is.close();
                     fis.close();
                     //Add new item to history
-                    list_of_item.add(new Item(BitMapToString(b),"test","testing1",false));
+                    list_of_item.add(new Item(BitMapToString(b),"test","testing1",true));
                     try {
                         FileOutputStream fos = this.openFileOutput(dir_str, this.MODE_PRIVATE);
                         ObjectOutputStream os = new ObjectOutputStream(fos);
@@ -111,7 +111,7 @@ public class Camera extends AppCompatActivity {
             else{
                 try {
                     //add item to the list_of_item (list_of_item first item tho)
-                    list_of_item.add(new Item(BitMapToString(b),"test","testing1",false));
+                    list_of_item.add(new Item(BitMapToString(b),"test","testing1",true));
                     //Create history file in Internal Storage
                     FileOutputStream fos = this.openFileOutput(dir_str, this.MODE_PRIVATE);
                     ObjectOutputStream os = new ObjectOutputStream(fos);

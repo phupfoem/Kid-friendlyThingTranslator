@@ -1904,6 +1904,7 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fade
+id favorite_button
 id favoriteslist
 id fill
 id fill_horizontal
@@ -1944,6 +1945,7 @@ id inward
 id italic
 id item_description
 id item_image
+id item_layout
 id item_name
 id item_touch_helper_previous_elevation
 id jumpToEnd
@@ -2054,6 +2056,7 @@ id ratio
 id rectangles
 id recwords
 id recycler_view1
+id recycler_view2
 id reverseSawtooth
 id right
 id rightToLeft
@@ -2273,6 +2276,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout favorite_layout
 layout history_layout
 layout homelayout
 layout list_item

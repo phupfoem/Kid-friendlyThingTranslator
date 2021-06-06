@@ -45,7 +45,7 @@ public class HistoryActivity extends AppCompatActivity {
             simpleList.setAdapter(adapter);
         }
         else{
-
+            Toast.makeText(this,"No History yet",Toast.LENGTH_LONG).show();
         }
 
     }
