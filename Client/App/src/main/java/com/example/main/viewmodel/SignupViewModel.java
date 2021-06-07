@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.main.data.model.LoginDataState;
 import com.example.main.data.model.Result;
 import com.example.main.data.model.SignupDataState;
 import com.example.main.data.remote.MainApiUtils;
@@ -78,8 +77,7 @@ public class SignupViewModel extends ViewModel {
 
 
     private boolean isNameValid(String name) {
-        final String name_regex = "^[\\w-.']( [\\w-.'])*$";
-        return name != null && name.matches(name_regex);
+        return name != null;
     }
 
     private boolean isEmailValid(String email) {

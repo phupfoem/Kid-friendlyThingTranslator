@@ -32,9 +32,7 @@
   <component name="ChangeListManager">
     <list default="true" id="76f25bb2-58cb-4338-bc1a-12e4ce88eff9" name="Default Changelist" comment="add HistoryActivity to Manifest.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/SignupActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/SignupActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/app/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/app/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/viewmodel/SignupViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/viewmodel/SignupViewModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
