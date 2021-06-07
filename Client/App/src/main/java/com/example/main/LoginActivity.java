@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText passwordEditText;
 
     private Button loginBtn;
-    private TextView signupBtn;
+    private TextView signupTextView;
 
 
     @Override
@@ -104,8 +104,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
         // Get sign up button, on click, go to sign-up activity
-        signupBtn = (TextView) findViewById(R.id.signup);
-        signupBtn.setOnClickListener(new View.OnClickListener() {
+        signupTextView = (TextView) findViewById(R.id.signup);
+        signupTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, SignupActivity.class);

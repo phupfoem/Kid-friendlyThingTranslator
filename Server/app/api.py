@@ -68,14 +68,14 @@ async def add_sth() -> dict:
 
 
 @app.post("/user/signup")
-async def create_user(user: UserSignupSchema = Body(...)):
+async def create_user(user: UserSignupSchema = Body(...)) -> dict:
     my_cursor = my_db.cursor()
 
-    sql = "INSERT INTO accounts(email, password, name) VALUES (%s, %s, %s)"
+    sql = "INSERT INTO accounts(username, password, name) VALUES (%s, %s, %s)"
     param = (user.email, user.password, user.name)
 
     my_cursor.execute(sql, param)
-    my_cursor.commit()
+    my_db.commit()
 
     return {
         "message": "Ok"

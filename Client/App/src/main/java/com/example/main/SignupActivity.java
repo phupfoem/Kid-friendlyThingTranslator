@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.main.data.model.Result;
 import com.example.main.viewmodel.SignupViewModel;
@@ -23,7 +24,7 @@ public class SignupActivity extends AppCompatActivity {
     private EditText passwordEditText;
     private EditText passwordConfirmEditText;
 
-    private TextView loginBtn;
+    private TextView loginTextView;
     private Button signupBtn;
 
 
@@ -32,10 +33,13 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        // Make a view model
+        signupViewModel = new ViewModelProvider(this).get(SignupViewModel.class);
+
         // Get edit texts
         nameEditText = (EditText)findViewById(R.id.textNameSignUp);
-        passwordEditText = (EditText)findViewById(R.id.textPasswordSignUp);
         emailEditText = (EditText)findViewById(R.id.textEmailSignUp);
+        passwordEditText = (EditText)findViewById(R.id.textPasswordSignUp);
         passwordConfirmEditText = (EditText)findViewById(R.id.textPasswordRetypeSignUp);
 
         // Add  listener
@@ -61,7 +65,6 @@ public class SignupActivity extends AppCompatActivity {
         passwordEditText.addTextChangedListener(afterTextChangedListener);
         passwordConfirmEditText.addTextChangedListener(afterTextChangedListener);
 
-        //Go back to Log in Page
         signupBtn = (Button) findViewById(R.id.btnSignUp);
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +75,7 @@ public class SignupActivity extends AppCompatActivity {
                         emailEditText.getText().toString(),
                         passwordEditText.getText().toString()
                 );
-                loginBtn.setVisibility(View.INVISIBLE);
+                signupBtn.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -101,10 +104,10 @@ public class SignupActivity extends AppCompatActivity {
                     passwordConfirmEditText.setError(dataState.getPasswordConfirmError());
                 }
 
-                loginBtn.setEnabled(false);
+                signupBtn.setEnabled(false);
             }
             else {
-                loginBtn.setEnabled(true);
+                signupBtn.setEnabled(true);
             }
         });
         signupViewModel.getResult().observe(this, result -> {
@@ -122,8 +125,8 @@ public class SignupActivity extends AppCompatActivity {
         });
 
         // Get login button, on click, go back to login page
-        loginBtn = (TextView)findViewById(R.id.login);
-        loginBtn.setOnClickListener(new View.OnClickListener() {
+        loginTextView = (TextView)findViewById(R.id.login);
+        loginTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
