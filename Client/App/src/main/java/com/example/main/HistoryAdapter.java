@@ -29,9 +29,11 @@ import java.util.ArrayList;
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
 
     private ArrayList<Item> items;
+    private ArrayList<Item> oitems; // backup using for filter/search
     private Context context;
     public HistoryAdapter(ArrayList<Item> items) {
         this.items = items;
+        this.oitems = items;
     }
 
     @NonNull
@@ -55,6 +57,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
                     items.get(position).setFavorite(true);
+                    oitems.get(position).setFavorite(true);
                     String dir_str = "history";
                     File dir = new File(context.getFilesDir().getAbsolutePath() + "/history");
                     if(dir.exists()) {
@@ -81,6 +84,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 @Override
                 public void onClick(View v) {
                     items.get(position).setFavorite(false);
+                    oitems.get(position).setFavorite(false);
                     String dir_str = "history";
                     File dir = new File(context.getFilesDir().getAbsolutePath() + "/history");
                     if(dir.exists()) {
@@ -113,6 +117,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         items.remove(position);
+                        oitems.remove(position);
                         try {
                             String dir_str = "history";
                             FileOutputStream fos = context.openFileOutput(dir_str, context.MODE_PRIVATE);
@@ -183,6 +188,17 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     }
     public void addContext(Context context){
         this.context = context;
+    }
+
+    public ArrayList<Item> getItems(){
+        return items;
+    }
+    public ArrayList<Item> getoItems(){
+        return oitems;
+    }
+    public void filterList(ArrayList<Item> filteredList){
+        items = filteredList;
+        notifyDataSetChanged();
     }
 
     public static String BitMapToString(Bitmap bitmap){

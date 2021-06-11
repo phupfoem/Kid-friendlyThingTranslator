@@ -28,12 +28,15 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
 
     private ArrayList<Item> items;
+    private ArrayList<Item> oitems; // backup using for filter/search
     private Context context;
     public FavoriteAdapter(ArrayList<Item> items) {
         this.items = items;
+        this.oitems = items;
     }
 
     @NonNull
@@ -95,6 +98,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                             }
                         }
                         items.remove(position);
+                        oitems.remove(position);
                         notifyDataSetChanged();
                         //Intent refresh = new Intent(context, FavoriteActivity.class);
                         //context.startActivity(refresh);
@@ -158,6 +162,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                             }
                         }
                         items.remove(position);
+                        oitems.remove(position);
                         notifyDataSetChanged();
                         //Intent refresh = new Intent(context, FavoriteActivity.class);
                         //context.startActivity(refresh);
@@ -221,6 +226,16 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         this.context = context;
     }
 
+    public void filterList(ArrayList<Item> filteredList){
+        items = filteredList;
+        notifyDataSetChanged();
+    }
+    public ArrayList<Item> getItems(){
+        return items;
+    }
+    public ArrayList<Item> getoItems(){
+        return oitems;
+    }
     public static String BitMapToString(Bitmap bitmap){
         ByteArrayOutputStream baos=new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);

@@ -1,7 +1,10 @@
 package com.example.main;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,13 +17,14 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
 
+
 public class HistoryActivity extends AppCompatActivity {
     RecyclerView simpleList; //change to Recycler View since its legacy now :(
-
+    ArrayList<Item> list_of_item = new ArrayList<Item>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ArrayList<Item> list_of_item = new ArrayList<Item>();
+        //ArrayList<Item> list_of_item = new ArrayList<Item>();
         String dir_str = "history";
         File dir = new File(this.getFilesDir().getAbsolutePath() + "/history");
         setContentView(R.layout.history_layout);
@@ -33,9 +37,10 @@ public class HistoryActivity extends AppCompatActivity {
                 fis.close();
                 Toast.makeText(this,"1",Toast.LENGTH_LONG).show();
             }
-            catch(Exception e){
+            catch(Exception e) {
                 Log.e("exception 2", Log.getStackTraceString(e));
             }
+            EditText search_bar = findViewById(R.id.history_search);
 
             simpleList = ((RecyclerView) this.findViewById(R.id.recycler_view1));
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
@@ -43,6 +48,36 @@ public class HistoryActivity extends AppCompatActivity {
             HistoryAdapter adapter = new HistoryAdapter(list_of_item);
             adapter.addContext(this);
             simpleList.setAdapter(adapter);
+            search_bar.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                }
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {
+                    ArrayList<Item> filteredList = new ArrayList<Item>();
+                    for (Item item : adapter.getItems()) {
+                        if (item.getName().toLowerCase().contains(s.toString().toLowerCase())) {
+                            filteredList.add(item);
+                        }
+                    }
+                    if (filteredList.size() == 0){
+                        for(Item item : adapter.getoItems()){
+                            if(item.getName().toLowerCase().contains(s.toString().toLowerCase())){
+                                filteredList.add(item);
+                            }
+                        }
+                    }
+                    adapter.filterList(filteredList);
+
+                }
+            });
         }
         else{
             Toast.makeText(this,"No History yet",Toast.LENGTH_LONG).show();

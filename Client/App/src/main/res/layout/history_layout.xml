@@ -19,6 +19,11 @@
             android:textAlignment="center"
             />
 
+        <EditText
+            android:id="@+id/history_search"
+            android:layout_width="match_parent"
+            android:layout_height="64dp">
+        </EditText>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_marginTop="10dp"
