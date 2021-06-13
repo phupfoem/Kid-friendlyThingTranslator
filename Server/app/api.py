@@ -9,6 +9,7 @@ import mysql.connector
 
 # noinspection PyPackageRequirements
 import decouple
+import base64
 
 import os
 from typing import Any, AnyStr, Dict, List, Union, Optional
@@ -90,6 +91,11 @@ async def user_login_body(user: UserLoginSchema = Body(...)) -> dict:
 
 
 @app.post("/label-image")
-async def recognize_image(image: str = Body(...)):
-    print(image)
+async def recognize_image(image: str = Body(...)) -> dict:
+    image = base64.b64decode(image)
 
+    filename = 'demo_image.jpg'
+    with open(filename, 'wb') as f:
+        f.write(image)
+
+    return {"message": "Ok"}
