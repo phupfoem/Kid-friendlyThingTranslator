@@ -92,7 +92,7 @@ async def create_user(user: UserSignupSchema = Body(...)) -> dict:
 @app.post("/user/login")
 async def user_login_body(user: UserLoginSchema = Body(...)) -> dict:
     if check_user(user):
-        return sign_jwt(user.email) | {'name': get_user_name(user)}
+        return {**sign_jwt(user.email), **{'name': get_user_name(user)}}
     raise HTTPException(status_code=401, detail="Wrong email/password.")
 
 

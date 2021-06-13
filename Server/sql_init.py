@@ -4,16 +4,16 @@ import decouple
 
 
 if __name__ == "__main__":
-    # my_db = mysql.connector.connect(
-    #     host=decouple.config('host'),
-    #     user=decouple.config('user'),
-    #     password=decouple.config('password')
-    # )
-    #
-    # my_cursor = my_db.cursor()
-    #
-    # sql = """create database USER"""
-    # my_cursor.execute(sql)
+    my_db = mysql.connector.connect(
+        host=decouple.config('host'),
+        user=decouple.config('user'),
+        password=decouple.config('password')
+    )
+
+    my_cursor = my_db.cursor()
+
+    sql = """create database USER"""
+    my_cursor.execute(sql)
 
     my_db = mysql.connector.connect(
         host=decouple.config('host'),
