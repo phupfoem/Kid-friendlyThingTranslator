@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     public void openCamera(){
-        Intent intent = new Intent(this, Camera.class);
+        Intent intent = new Intent(this, CameraActivity.class);
         startActivity(intent);
     }
     public void openHistory(){

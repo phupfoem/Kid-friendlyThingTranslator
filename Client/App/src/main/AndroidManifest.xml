@@ -26,7 +26,7 @@
 
         </activity>
         <activity
-            android:name=".Camera"
+            android:name=".CameraActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".TextToSpeech"

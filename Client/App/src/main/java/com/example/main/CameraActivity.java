@@ -26,7 +26,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class Camera extends AppCompatActivity {
+public class CameraActivity extends AppCompatActivity {
     private LabelImageViewModel labelImageViewModel;
 
     private Button btn;
@@ -93,62 +93,69 @@ public class Camera extends AppCompatActivity {
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
+
         if (resultCode == RESULT_OK){
             Bitmap b = (Bitmap)data.getExtras().get("data");
             myImage.setImageBitmap(b);
             //Saving items to history file in Internal Storage
-            ArrayList<Item> list_of_item = new ArrayList<Item>();
+
             String dir_str = "history";
-            File dir = new File(this.getFilesDir().getAbsolutePath() + "/history");
+            File dir = new File(this.getFilesDir().getAbsolutePath() + "/" + dir_str);
 
             // Encode bitmap to string
             String imageBase64 = BitMapToString(b);
 
-            // Send to server to label
-            labelImageViewModel.labelImage(imageBase64);
+            ArrayList<Item> items;
+            if (dir.exists()) {
+                // If history file exists, read from Internal Storage
+                items = readListItemFromFile(dir);
+            }
+            else {
+                // Assign an empty list
+                items = new ArrayList<>();
+            }
 
-            if (dir.exists()){ //Check if history file exists? in Internal Storage
-                try {
-                    //Open history file
-                    FileInputStream fis = new FileInputStream(dir);
-                    ObjectInputStream is = new ObjectInputStream(fis);
-                    list_of_item = (ArrayList<Item>)is.readObject();
-                    is.close();
-                    fis.close();
-                    //Add new item to history
-                    list_of_item.add(new Item(imageBase64,"test","testing1",true));
-                    try {
-                        FileOutputStream fos = this.openFileOutput(dir_str, this.MODE_PRIVATE);
-                        ObjectOutputStream os = new ObjectOutputStream(fos);
-                        os.writeObject(list_of_item);
-                        os.close();
-                        fos.close();
-                    }
-                    catch(Exception e){
-                        Log.e("exception 1", Log.getStackTraceString(e));
-                    }
-                    Toast.makeText(this,"1",Toast.LENGTH_LONG).show();
-                }
-                catch(Exception e){
-                    Log.e("exception 2", Log.getStackTraceString(e));
-                }
-            }
-            else{
-                try {
-                    //add item to the list_of_item (list_of_item first item tho)
-                    list_of_item.add(new Item(imageBase64,"test","testing1",true));
-                    //Create history file in Internal Storage
-                    FileOutputStream fos = this.openFileOutput(dir_str, this.MODE_PRIVATE);
-                    ObjectOutputStream os = new ObjectOutputStream(fos);
-                    os.writeObject(list_of_item);
-                    os.close();
-                    fos.close();
-                    Toast.makeText(this,"2",Toast.LENGTH_LONG).show();
-                }
-                catch(Exception e){
-                    Log.e("exception 3", Log.getStackTraceString(e));
-                }
-            }
+            // Send to server to label
+            labelImageViewModel.labelImage(imageBase64, items);
+
+
+            this.writeListItemToFilename(items, dir_str);
+        }
+    }
+
+    private ArrayList<Item> readListItemFromFile(File file)
+    {
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            ObjectInputStream is = new ObjectInputStream(fis);
+
+            ArrayList<Item> res = (ArrayList<Item>) is.readObject();
+
+            is.close();
+            fis.close();
+
+            return res;
+        }
+        catch(Exception e){
+            Log.e("exception encountered reading history file", Log.getStackTraceString(e));
+
+            return new ArrayList<>();
+        }
+    }
+
+    private void writeListItemToFilename(ArrayList<Item> items, String filename)
+    {
+        try {
+            FileOutputStream fos = this.openFileOutput(filename, MODE_PRIVATE);
+            ObjectOutputStream os = new ObjectOutputStream(fos);
+
+            os.writeObject(items);
+
+            os.close();
+            fos.close();
+        }
+        catch(Exception e){
+            Log.e("exception encountered writing to history file", Log.getStackTraceString(e));
         }
     }
 }
