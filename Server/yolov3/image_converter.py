@@ -12,11 +12,11 @@ ImageBase64 = str
 
 
 # Take in base64 string and return PIL image
-def stringToImage(image_base64: ImageBase64) -> Image:
+def string_to_image(image_base64: ImageBase64) -> Image:
     image_data = base64.b64decode(image_base64)
     return Image.open(io.BytesIO(image_data))
 
 
 # convert PIL Image to an RGB image( technically a numpy array ) that's compatible with opencv
-def toRGB(image: Image):
+def to_rgb(image: Image):
     return cv2.cvtColor(np.array(image), cv2.COLOR_BGR2RGB)

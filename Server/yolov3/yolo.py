@@ -2,8 +2,6 @@ import cv2
 
 import numpy as np
 
-import time
-
 
 class ImageLabeler:
     def __init__(self, labels_path: str, weights_path: str, config_path: str):
@@ -25,12 +23,7 @@ class ImageLabeler:
         blob = cv2.dnn.blobFromImage(image, 1 / 255.0, (416, 416),
                                      swapRB=True, crop=False)
         self._net.setInput(blob)
-        start = time.time()
         layer_outputs = self._net.forward(ln)
-        end = time.time()
-
-        # show timing information on YOLO
-        print("[INFO] YOLO took {:.6f} seconds".format(end - start))
 
         argmax_class_id = None
 

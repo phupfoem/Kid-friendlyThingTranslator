@@ -1,5 +1,5 @@
 from yolov3.yolo import ImageLabeler
-from yolov3.image_converter import stringToImage, toRGB
+from yolov3.image_converter import string_to_image, to_rgb
 
 from word_definition.memory_dictionary import MemoryDictionary
 from word_definition.database_dictionary import DatabaseDictionary
@@ -15,8 +15,11 @@ from google.cloud import vision
 
 import mysql.connector
 
+import cv2
+
 import decouple
-import base64
+import logging
+import time
 
 from typing import Any, AnyStr, Dict, List, Union
 
@@ -24,6 +27,9 @@ from typing import Any, AnyStr, Dict, List, Union
 JSONObject = Dict[AnyStr, Any]
 JSONArray = List[Any]
 JSONStructure = Union[JSONArray, JSONObject]
+
+
+logging.basicConfig(level=logging.INFO)
 
 
 # REST-ful API server
@@ -41,25 +47,25 @@ db_user = mysql.connector.connect(
 
 # Instantiates a GG Cloud client
 try:
-    print("[INFO] Instantiating a Google Cloud Vision Client...")
+    logging.info("Instantiating a Google Cloud Vision Client...")
     client = vision.ImageAnnotatorClient()
-    print("[INFO] Google Cloud Vision Client instantiated")
-except:
-    print("[WARN] Failed to instantiate a Google Cloud Vision Client")
+    logging.info("Google Cloud Vision Client instantiated")
+except Exception as e:
+    logging.warning("Failed to instantiate a Google Cloud Vision Client: %s", str(e))
     client = None
 
 
 # Word dictionary
 try:
-    print("[INFO] Loading a Memory Dictionary...")
+    logging.info("Loading a Memory Dictionary...")
     memory_word_dict = MemoryDictionary(decouple.config("common_word_definition"))
-    print("[INFO] Loaded a Memory Dictionary")
+    logging.info("Loaded a Memory Dictionary")
 except MemoryError:
-    print("[WARN] Fail to load a Memory Dictionary")
+    logging.warning("Fail to load a Memory Dictionary")
     memory_word_dict = None
 
 try:
-    print("[INFO] Loading a Database Dictionary...")
+    logging.info("Loading a Database Dictionary...")
     database_word_dict = DatabaseDictionary(
         mysql.connector.connect(
             host=decouple.config('host'),
@@ -68,20 +74,20 @@ try:
             database=decouple.config('database_dictionary')
         )
     )
-    print("[INFO] Loaded a Database Dictionary")
-except:
-    print("[WARN] Fail to load a Database Dictionary")
+    logging.info("Loaded a Database Dictionary")
+except Exception as e:
+    logging.error("Fail to load a Database Dictionary: %s", str(e))
     memory_word_dict = None
 
 
 # Yolov3 Image Labeler
-print("[INFO] Loading YOLO from disk...")
+logging.info("Loading YOLO from disk...")
 yolov3_image_labeler = ImageLabeler(
     labels_path=decouple.config("yolov3_names"),
     weights_path=decouple.config("yolov3_weights"),
     config_path=decouple.config("yolov3_config")
 )
-print("[INFO] Loaded YOLO")
+logging.info("Loaded YOLO")
 
 
 # helpers
@@ -149,10 +155,13 @@ async def user_login_body(user: UserLoginSchema = Body(...)) -> dict:
 
 @app.post("/label-image")
 async def recognize_image(image_base64: str = Body(...)) -> dict:
-    image = base64.b64decode(image_base64)
+    image = to_rgb(string_to_image(image_base64))
 
     # Try using GG Cloud service
     try:
+        _, encoded_image = cv2.imencode('.jpg', image)
+        image = vision.Image(content=encoded_image.tobytes())
+
         # Performs label detection on the image file
         response = client.label_detection(image=image)
         labels = response.label_annotations
@@ -162,14 +171,17 @@ async def recognize_image(image_base64: str = Body(...)) -> dict:
                 "message": response.error.message
             }
 
-        print('Labels:')
-        for label in labels:
-            print(label.description)
+        label = labels[0].description if labels else ""
+    except Exception as e:
+        logging.warning("Fail to use Google Cloud Vision: %s", str(e))
 
-        label = labels[0] if labels else ""
-    except:
         # Fall back to local yolov3
-        label = yolov3_image_labeler.label_image(toRGB(stringToImage(image_base64)))
+        start = time.time()
+        label = yolov3_image_labeler.label_image(image)
+        end = time.time()
+
+        # show timing information on YOLO
+        logging.info("YOLO took {:.6f} seconds".format(end - start))
 
     return {
         "message": "Ok",
