@@ -7,13 +7,15 @@ from app.auth.auth_handler import sign_jwt
 from fastapi import Body, Depends, FastAPI
 from fastapi import HTTPException
 
+# Imports the Google Cloud client library
+# from google.cloud import vision
+
 import mysql.connector
 
 import decouple
 import base64
 
-import os
-from typing import Any, AnyStr, Dict, List, Union, Optional
+from typing import Any, AnyStr, Dict, List, Union
 
 
 JSONObject = Dict[AnyStr, Any]
@@ -98,9 +100,22 @@ async def user_login_body(user: UserLoginSchema = Body(...)) -> dict:
 async def recognize_image(image_base64: str = Body(...)) -> dict:
     image = base64.b64decode(image_base64)
 
-    filename = 'demo_image.jpg'
-    with open(filename, 'wb') as f:
-        f.write(image)
+    # # Performs label detection on the image file
+    # response = client.label_detection(image=image)
+    # labels = response.label_annotations
+    #
+    # if response.error.message:
+    #     return {
+    #         "message": response.error.message
+    #     }
+    #
+    # print('Labels:')
+    # for label in labels:
+    #     print(label.description)
+    #
+    # return {
+    #     "message": labels[0] if labels else "Spooky~~"
+    # }
 
     label = label_image(toRGB(stringToImage(image_base64))) or "Spooky~~"
     return {
