@@ -87,3 +87,9 @@ async def user_login_body(user: UserLoginSchema = Body(...)) -> dict:
     if check_user(user):
         return sign_jwt(user.email) | {'name': get_user_name(user)}
     raise HTTPException(status_code=401, detail="Wrong email/password.")
+
+
+@app.post("/label-image")
+async def recognize_image(image: str = Body(...)):
+    print(image)
+
