@@ -1,4 +1,7 @@
-from yolov3.yolo import label_image, stringToImage, toRGB
+from yolov3.yolo import label_image
+from yolov3.image_converter import stringToImage, toRGB
+
+from word_definition.memory_dictionary import MemoryDictionary
 
 from app.model import *
 from app.auth.auth_bearer import JWTBearer
@@ -34,6 +37,9 @@ my_db = mysql.connector.connect(
 
 # Instantiates a GG Cloud client
 # client = vision.ImageAnnotatorClient()
+
+# Word dictionary
+word_dict = MemoryDictionary(decouple.config("word_definition"))
 
 
 # helpers
@@ -117,7 +123,9 @@ async def recognize_image(image_base64: str = Body(...)) -> dict:
     #     "message": labels[0] if labels else "Spooky~~"
     # }
 
-    label = label_image(toRGB(stringToImage(image_base64))) or "Spooky~~"
+    label = label_image(toRGB(stringToImage(image_base64)))
     return {
-        "message": label
+        "message": "Ok",
+        "word": label or "Spooky~~",
+        "description": word_dict.define(label)
     }
