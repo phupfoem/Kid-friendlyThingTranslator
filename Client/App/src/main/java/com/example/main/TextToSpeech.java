@@ -43,9 +43,14 @@ public class TextToSpeech extends AppCompatActivity {
         textToSpeech = new android.speech.tts.TextToSpeech(getApplicationContext(), new android.speech.tts.TextToSpeech.OnInitListener() {
             @Override
             public void onInit(int status) {
-                Log.e("TTS", "TextToSpeech.OnInitListener.onInit...");
-                printOutSupportedLanguages();
-                setTextToSpeechLanguage();
+                if (status == android.speech.tts.TextToSpeech.SUCCESS) {
+                    Log.e("TTS", "TextToSpeech.OnInitListener.onInit...");
+                    printOutSupportedLanguages();
+                    setTextToSpeechLanguage();
+                }
+                else{
+                    Log.e("Failure","TextToSpeechFailure");
+                }
             }
         });
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
