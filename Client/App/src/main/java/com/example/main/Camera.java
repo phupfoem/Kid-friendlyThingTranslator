@@ -13,6 +13,10 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.main.data.model.Result;
+import com.example.main.viewmodel.LabelImageViewModel;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -23,12 +27,26 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Camera extends AppCompatActivity {
+    private LabelImageViewModel labelImageViewModel;
+
     private Button btn;
     private ImageView myImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+
+        // Make a login view model
+        labelImageViewModel = new ViewModelProvider(this).get(LabelImageViewModel.class);
+
+        labelImageViewModel.getResult().observe(this, result -> {
+            if (result instanceof Result.Error){
+                Toast.makeText(this, ((Result.Error<String>) result).getError().getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            else if (result instanceof Result.Success) {
+                Toast.makeText(this, ((Result.Success<String>) result).getData(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
         myImage = (ImageView) findViewById(R.id.myImage);
 
@@ -75,13 +93,20 @@ public class Camera extends AppCompatActivity {
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
-        if (resultCode ==RESULT_OK){
+        if (resultCode == RESULT_OK){
             Bitmap b = (Bitmap)data.getExtras().get("data");
             myImage.setImageBitmap(b);
             //Saving items to history file in Internal Storage
             ArrayList<Item> list_of_item = new ArrayList<Item>();
             String dir_str = "history";
             File dir = new File(this.getFilesDir().getAbsolutePath() + "/history");
+
+            // Encode bitmap to string
+            String imageBase64 = BitMapToString(b);
+
+            // Send to server to label
+            labelImageViewModel.labelImage(imageBase64);
+
             if (dir.exists()){ //Check if history file exists? in Internal Storage
                 try {
                     //Open history file
@@ -91,7 +116,7 @@ public class Camera extends AppCompatActivity {
                     is.close();
                     fis.close();
                     //Add new item to history
-                    list_of_item.add(new Item(BitMapToString(b),"test","testing1",true));
+                    list_of_item.add(new Item(imageBase64,"test","testing1",true));
                     try {
                         FileOutputStream fos = this.openFileOutput(dir_str, this.MODE_PRIVATE);
                         ObjectOutputStream os = new ObjectOutputStream(fos);
@@ -111,7 +136,7 @@ public class Camera extends AppCompatActivity {
             else{
                 try {
                     //add item to the list_of_item (list_of_item first item tho)
-                    list_of_item.add(new Item(BitMapToString(b),"test","testing1",true));
+                    list_of_item.add(new Item(imageBase64,"test","testing1",true));
                     //Create history file in Internal Storage
                     FileOutputStream fos = this.openFileOutput(dir_str, this.MODE_PRIVATE);
                     ObjectOutputStream os = new ObjectOutputStream(fos);

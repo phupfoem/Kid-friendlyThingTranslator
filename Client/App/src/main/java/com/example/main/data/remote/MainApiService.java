@@ -14,4 +14,7 @@ public interface MainApiService {
 
     @POST("/user/signup")
     Call<JsonObject> signup(@Body UserSignupSchema user);
+
+    @POST("/label-image")
+    Call<JsonObject> labelImage(@Body String image);
 }

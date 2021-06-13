@@ -36,4 +36,8 @@ public class MainApiUtils {
     public Call<JsonObject> signup(String name, String email, String password) {
         return apiService.signup(new UserSignupSchema(email, password, name));
     }
+
+    public Call<JsonObject> labelImage(String imageBase64) {
+        return apiService.labelImage(imageBase64);
+    }
 }
