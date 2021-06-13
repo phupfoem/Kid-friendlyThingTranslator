@@ -1,3 +1,5 @@
+from yolov3.yolo import label_image, stringToImage, toRGB
+
 from app.model import *
 from app.auth.auth_bearer import JWTBearer
 from app.auth.auth_handler import sign_jwt
@@ -7,7 +9,6 @@ from fastapi import HTTPException
 
 import mysql.connector
 
-# noinspection PyPackageRequirements
 import decouple
 import base64
 
@@ -28,6 +29,9 @@ my_db = mysql.connector.connect(
     password=decouple.config('password'),
     database=decouple.config('database_user')
 )
+
+# Instantiates a GG Cloud client
+# client = vision.ImageAnnotatorClient()
 
 
 # helpers
@@ -91,11 +95,14 @@ async def user_login_body(user: UserLoginSchema = Body(...)) -> dict:
 
 
 @app.post("/label-image")
-async def recognize_image(image: str = Body(...)) -> dict:
-    image = base64.b64decode(image)
+async def recognize_image(image_base64: str = Body(...)) -> dict:
+    image = base64.b64decode(image_base64)
 
     filename = 'demo_image.jpg'
     with open(filename, 'wb') as f:
         f.write(image)
 
-    return {"message": "Ok"}
+    label = label_image(toRGB(stringToImage(image_base64))) or "Spooky~~"
+    return {
+        "message": label
+    }

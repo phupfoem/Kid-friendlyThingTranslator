@@ -12,3 +12,6 @@ venv/
 .vscode
 *.sln
 *.vcxproj*
+
+# Config
+config
