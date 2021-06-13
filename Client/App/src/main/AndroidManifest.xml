@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.CAMERA"
         android:required="true"
         android:requiredFeature="true"/>
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
     <application
         android:usesCleartextTraffic="true"
         android:allowBackup="true"
@@ -24,17 +26,15 @@
             android:name=".LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.MaterialComponents.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".Camera"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
             android:name=".TextToSpeech"
-            android:theme="@style/Theme.MaterialComponents.NoActionBar" />
+            android:theme="@style/Theme.MaterialComponents.NoActionBar">
+        </activity>
         <activity
             android:name=".HistoryActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
@@ -44,7 +44,10 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" >
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
 
@@ -52,5 +55,9 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.TTS_SERVICE" />
+        </intent>
+    </queries>
 </manifest>
