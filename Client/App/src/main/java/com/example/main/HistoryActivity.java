@@ -20,7 +20,8 @@ import java.util.ArrayList;
 
 public class HistoryActivity extends AppCompatActivity {
     RecyclerView simpleList; //change to Recycler View since its legacy now :(
-    ArrayList<Item> list_of_item = new ArrayList<Item>();
+    ArrayList<Item> list_of_item = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +68,7 @@ public class HistoryActivity extends AppCompatActivity {
                             filteredList.add(item);
                         }
                     }
+
                     adapter.filterList(filteredList);
                 }
             });
