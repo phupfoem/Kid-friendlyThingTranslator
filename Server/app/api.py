@@ -124,8 +124,13 @@ async def recognize_image(image_base64: str = Body(...)) -> dict:
     # }
 
     label = label_image(toRGB(stringToImage(image_base64)))
+    print({
+        "message": "Ok",
+        "word": label,
+        "description": word_dict.define(label)
+    })
     return {
         "message": "Ok",
-        "word": label or "Spooky~~",
+        "word": label,
         "description": word_dict.define(label)
     }

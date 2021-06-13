@@ -1,4 +1,4 @@
-from dictionary import Dictionary
+from word_definition.dictionary import Dictionary
 
 import json
 
@@ -6,7 +6,7 @@ import json
 class MemoryDictionary(Dictionary):
     def __init__(self, json_path: str):
         self._map = {
-            entry["word"]: entry["description"] for entry in json.load(open(json_path))
+            entry["word"].lower(): entry["description"] for entry in json.load(open(json_path))
         }
 
     def define(self, word: str) -> str:

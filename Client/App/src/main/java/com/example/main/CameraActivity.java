@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.main.data.model.ImageDescription;
 import com.example.main.data.model.Result;
 import com.example.main.viewmodel.LabelImageViewModel;
 
@@ -27,6 +28,9 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class CameraActivity extends AppCompatActivity {
+    private final String dir_str = "history";
+    private ArrayList<Item> items;
+
     private LabelImageViewModel labelImageViewModel;
 
     private Button btn;
@@ -36,15 +40,39 @@ public class CameraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
+        // Get all history items
+        File dir = new File(this.getFilesDir().getAbsolutePath() + "/" + dir_str);
+        if (dir.exists()) {
+            // If history file exists, read from Internal Storage
+            items = readListItemFromFile(dir);
+        }
+        else {
+            // Assign an empty list
+            items = new ArrayList<>();
+        }
+
         // Make a login view model
         labelImageViewModel = new ViewModelProvider(this).get(LabelImageViewModel.class);
 
         labelImageViewModel.getResult().observe(this, result -> {
             if (result instanceof Result.Error){
-                Toast.makeText(this, ((Result.Error<String>) result).getError().getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,
+                        ((Result.Error<ImageDescription>) result).getError().getMessage(), Toast.LENGTH_SHORT
+                ).show();
             }
             else if (result instanceof Result.Success) {
-                Toast.makeText(this, ((Result.Success<String>) result).getData(), Toast.LENGTH_SHORT).show();
+                Result.Success<ImageDescription> success = (Result.Success<ImageDescription>) result;
+                Toast.makeText(this, success.getData().getLabel(), Toast.LENGTH_SHORT).show();
+
+                //Add new item to history
+                items.add(new Item(
+                        success.getData().getImageBase64(),
+                        success.getData().getLabel(),
+                        success.getData().getDefinition(),
+                        true)
+                );
+
+                this.writeListItemToFilename(items, dir_str);
             }
         });
 
@@ -99,27 +127,11 @@ public class CameraActivity extends AppCompatActivity {
             myImage.setImageBitmap(b);
             //Saving items to history file in Internal Storage
 
-            String dir_str = "history";
-            File dir = new File(this.getFilesDir().getAbsolutePath() + "/" + dir_str);
-
             // Encode bitmap to string
             String imageBase64 = BitMapToString(b);
 
-            ArrayList<Item> items;
-            if (dir.exists()) {
-                // If history file exists, read from Internal Storage
-                items = readListItemFromFile(dir);
-            }
-            else {
-                // Assign an empty list
-                items = new ArrayList<>();
-            }
-
             // Send to server to label
-            labelImageViewModel.labelImage(imageBase64, items);
-
-
-            this.writeListItemToFilename(items, dir_str);
+            labelImageViewModel.labelImage(imageBase64);
         }
     }
 

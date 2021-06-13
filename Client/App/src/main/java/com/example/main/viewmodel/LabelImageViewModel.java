@@ -4,12 +4,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.main.Item;
+import com.example.main.data.model.ImageDescription;
 import com.example.main.data.model.Result;
 import com.example.main.data.remote.MainApiUtils;
 import com.google.gson.JsonObject;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,10 +15,11 @@ import retrofit2.Response;
 import retrofit2.internal.EverythingIsNonNull;
 
 public class LabelImageViewModel extends ViewModel {
-    private final MutableLiveData<Result<String>> result = new MutableLiveData<>();
+    private final MutableLiveData<Result<ImageDescription>> result = new MutableLiveData<>();
+
     private final MainApiUtils mainApiUtils = MainApiUtils.getInstance();
 
-    public void labelImage(String imageBase64, ArrayList<Item> items) {
+    public void labelImage(String imageBase64) {
         Call<JsonObject> call = mainApiUtils.labelImage(imageBase64);
 
         call.enqueue(new Callback<JsonObject>() {
@@ -28,23 +27,31 @@ public class LabelImageViewModel extends ViewModel {
             @EverythingIsNonNull
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 if (response.code() == 200) {
+
                     if (response.body() == null) {
-                        result.postValue(new Result.Success<>("???"));
+                        result.postValue(new Result.Success<>(
+                                new ImageDescription(imageBase64, "???", "???"))
+                        );
                     }
                     else {
-                        result.postValue(new Result.Success<>(response.body().get("message").toString()));
-
-                        //Add new item to history
-                        items.add(new Item(
+                        result.postValue(new Result.Success<>(new ImageDescription(
                                 imageBase64,
                                 response.body().get("word").toString(),
-                                response.body().get("description").toString(),
-                                true)
-                        );
+                                response.body().get("description").toString()
+                        )));
                     }
                 }
                 else {
-                    result.postValue(new Result.Error<>(new Exception(response.body() == null ? "Error encountered. Please try again!" : response.body().get("message").toString())));
+                    if (response.body() == null) {
+                        result.postValue(new Result.Error<>(new Exception(
+                                "Error encountered. Please try again!"
+                        )));
+                    }
+                    else {
+                        result.postValue(new Result.Error<>(new Exception(
+                                response.body().get("message").toString()
+                        )));
+                    }
                 }
             }
 
@@ -58,7 +65,7 @@ public class LabelImageViewModel extends ViewModel {
 
     }
 
-    public LiveData<Result<String>> getResult() {
+    public LiveData<Result<ImageDescription>> getResult() {
         return result;
     }
 }
