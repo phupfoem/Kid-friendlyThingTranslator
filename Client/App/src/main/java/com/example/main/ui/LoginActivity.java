@@ -1,4 +1,4 @@
-package com.example.main;
+package com.example.main.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.main.R;
 import com.example.main.data.model.Result;
 import com.example.main.viewmodel.LoginViewModel;
 

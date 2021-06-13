@@ -1,6 +1,8 @@
 package com.example.main.data.model;
 
-public class ImageDescription {
+import java.io.Serializable;
+
+public class ImageDescription implements Serializable {
     private final String imageBase64;
 
     private String label;

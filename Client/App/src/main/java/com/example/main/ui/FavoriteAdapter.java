@@ -1,4 +1,4 @@
-package com.example.main;
+package com.example.main.ui;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -19,6 +19,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.main.R;
+import com.example.main.data.model.Item;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -50,7 +53,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Item item = items.get(position);
-        holder.name.setText(item.getName());
+        holder.name.setText(item.getLabel());
         holder.description.setText(item.getDescription());
         holder.image.setImageBitmap(StringToBitMap(item.getImage()));
         holder.favorite.setText("Unfavorite");
@@ -59,7 +62,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(context);
                 alert.setTitle("Unfavorite");
-                alert.setMessage("Are you sure you want to unfavorite " + item.getName() + "?");
+                alert.setMessage("Are you sure you want to unfavorite " + item.getLabel() + "?");
                 alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
                     @Override
@@ -123,7 +126,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(context);
                 alert.setTitle("Delete");
-                alert.setMessage("Are you sure you want to delete " + item.getName() + "?");
+                alert.setMessage("Are you sure you want to delete " + item.getLabel() + "?");
                 alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 
                     @Override
@@ -185,7 +188,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, TextToSpeech.class);
+                Intent intent = new Intent(context, TextToSpeechActivity.class);
                 intent.putExtra("item", item);
                 context.startActivity(intent);
             }

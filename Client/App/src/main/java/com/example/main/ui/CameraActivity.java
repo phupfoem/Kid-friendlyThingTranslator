@@ -1,11 +1,9 @@
-package com.example.main;
+package com.example.main.ui;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,11 +13,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.main.R;
 import com.example.main.data.model.ImageDescription;
+import com.example.main.data.model.Item;
 import com.example.main.data.model.Result;
+import com.example.main.util.ImageConverterUtil;
 import com.example.main.viewmodel.LabelImageViewModel;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -89,32 +89,7 @@ public class CameraActivity extends AppCompatActivity {
         });
 
     }
-    /**
-     * @param bitmap
-     * @return converting bitmap and return a string
-     */
-    public static String BitMapToString(Bitmap bitmap){
-        ByteArrayOutputStream baos=new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
-        byte [] b=baos.toByteArray();
-        String temp= Base64.encodeToString(b, Base64.DEFAULT);
-        return temp;
-    }
 
-    /**
-     * @param encodedString
-     * @return bitmap (from given string)
-     */
-    public static Bitmap StringToBitMap(String encodedString){
-        try{
-            byte [] encodeByte=Base64.decode(encodedString,Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        }catch(Exception e){
-            e.getMessage();
-            return null;
-        }
-    }
     private void takePicture(){
         Intent i = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(i, 0);
@@ -128,7 +103,7 @@ public class CameraActivity extends AppCompatActivity {
             //Saving items to history file in Internal Storage
 
             // Encode bitmap to string
-            String imageBase64 = BitMapToString(b);
+            String imageBase64 = ImageConverterUtil.BitMapToString(b);
 
             // Send to server to label
             labelImageViewModel.labelImage(imageBase64);

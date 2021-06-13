@@ -16,11 +16,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Main">
         <activity
-            android:name=".SignupActivity"
+            android:name=".ui.SignupActivity"
             android:label="@string/title_activity_sign_up"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.MaterialComponents.NoActionBar">
             <intent-filter>
@@ -29,20 +29,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CameraActivity"
+            android:name=".ui.CameraActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
-            android:name=".TextToSpeech"
+            android:name=".ui.TextToSpeechActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar">
         </activity>
         <activity
-            android:name=".HistoryActivity"
+            android:name=".ui.HistoryActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
-            android:name=".FavoriteActivity"
+            android:name=".ui.FavoriteActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:theme="@style/Theme.MaterialComponents.NoActionBar" >
         </activity>
 

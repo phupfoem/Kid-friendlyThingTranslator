@@ -31,8 +31,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76f25bb2-58cb-4338-bc1a-12e4ce88eff9" name="Default Changelist" comment="add HistoryActivity to Manifest.xml">
+      <change afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/util/ImageConverterUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/app/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/app/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/CameraActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/ui/CameraActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/FavoriteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/ui/FavoriteActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/FavoriteAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/ui/FavoriteAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/HistoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/ui/HistoryActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/HistoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/ui/HistoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/data/model/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/ui/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/ui/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/SignupActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/ui/SignupActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/TextToSpeech.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/ui/TextToSpeechActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/java/com/example/main/data/model/ImageDescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/java/com/example/main/data/model/ImageDescription.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/res/layout/activity_camera.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/res/layout/activity_camera.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/res/layout/activity_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/res/layout/activity_signup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/res/layout/activity_texttospeech.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/res/layout/activity_texttospeech.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/res/layout/favorite_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/res/layout/favorite_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/res/layout/history_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/res/layout/history_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App/src/main/res/layout/homelayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/App/src/main/res/layout/homelayout.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +95,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -103,18 +122,21 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="android-custom-viewC:/Users/Minh/AppData/Local/Android/Sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/App/src/main/res/drawable-xxhdpi" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/App/src/main/java/com/example/main" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.main" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.main.data.model" />
       <recent name="com.example.main.viewmodel" />
       <recent name="com.example.main" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Minh\Desktop\Kid-friendlyThingTranslator\Client\App\src\main\java\com\example\main" />
       <recent name="C:\Users\Minh\Desktop\Kid-friendlyThingTranslator\Client\App\src\main\res\drawable-xxhdpi" />
       <recent name="C:\Users\Minh\Desktop\Kid-friendlyThingTranslator\Client\App\src\main\java\com\example\main\data\model" />
-      <recent name="C:\Users\Minh\Desktop\Kid-friendlyThingTranslator\Client\App\src\main\java\com\example\main" />
     </key>
   </component>
   <component name="RunManager">
@@ -258,6 +280,18 @@
     <option name="LAST_COMMIT_MESSAGE" value="added pass item to TextToSpeech" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="341" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1623620610977">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="341" y="337" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1536.824@0.0.1536.824" timestamp="1623620610977" />
+    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1623619686010">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="551" y="281" width="433" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1623619686010" />
+    <state x="566" y="294" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages" timestamp="1623620612983">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="566" y="294" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.packages/0.0.1536.824@0.0.1536.824" timestamp="1623620612983" />
     <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1623021552991">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -336,6 +370,10 @@
     </state>
     <state x="442" y="200" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1622718843387" />
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622455046314" />
+    <state x="93" y="93" width="1350" height="638" key="dock-window-1" timestamp="1623621203079">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1623621203079" />
     <state x="486" y="145" width="579" height="534" key="find.popup" timestamp="1623002531432">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

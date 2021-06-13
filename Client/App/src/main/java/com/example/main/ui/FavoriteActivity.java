@@ -1,4 +1,4 @@
-package com.example.main;
+package com.example.main.ui;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,6 +10,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.main.R;
+import com.example.main.data.model.Item;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -69,7 +72,7 @@ public class FavoriteActivity extends AppCompatActivity {
                     public void afterTextChanged(Editable s) {
                         ArrayList<Item> filteredList = new ArrayList<Item>();
                         for (Item item : adapter.getoItems()) {
-                            if (item.getName().toLowerCase().contains(s.toString().toLowerCase())) {
+                            if (item.getLabel().toLowerCase().contains(s.toString().toLowerCase())) {
                                 filteredList.add(item);
                             }
                         }
