@@ -33,7 +33,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     private Context context;
     public HistoryAdapter(ArrayList<Item> items) {
         this.items = items;
-        this.oitems = items;
+        this.oitems = new ArrayList<Item>(items);
     }
 
     @NonNull

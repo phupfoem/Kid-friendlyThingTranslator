@@ -36,7 +36,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     private Context context;
     public FavoriteAdapter(ArrayList<Item> items) {
         this.items = items;
-        this.oitems = items;
+        this.oitems = new ArrayList<Item>(items);
     }
 
     @NonNull
@@ -97,8 +97,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                                 break;
                             }
                         }
-                        items.remove(position);
                         oitems.remove(position);
+                        items.remove(position);
                         notifyDataSetChanged();
                         //Intent refresh = new Intent(context, FavoriteActivity.class);
                         //context.startActivity(refresh);
@@ -161,8 +161,8 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                                 break;
                             }
                         }
-                        items.remove(position);
                         oitems.remove(position);
+                        items.remove(position);
                         notifyDataSetChanged();
                         //Intent refresh = new Intent(context, FavoriteActivity.class);
                         //context.startActivity(refresh);

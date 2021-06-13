@@ -68,8 +68,8 @@ public class FavoriteActivity extends AppCompatActivity {
                     @Override
                     public void afterTextChanged(Editable s) {
                         ArrayList<Item> filteredList = new ArrayList<Item>();
-                        for(Item item : adapter.getoItems()){
-                            if(item.getName().toLowerCase().contains(s.toString().toLowerCase())){
+                        for (Item item : adapter.getoItems()) {
+                            if (item.getName().toLowerCase().contains(s.toString().toLowerCase())) {
                                 filteredList.add(item);
                             }
                         }
