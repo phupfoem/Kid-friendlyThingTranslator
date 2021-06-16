@@ -19,8 +19,8 @@ public class LabelImageViewModel extends ViewModel {
 
     private final MainApiUtils mainApiUtils = MainApiUtils.getInstance();
 
-    public void labelImage(String imageBase64) {
-        Call<JsonObject> call = mainApiUtils.labelImage(imageBase64);
+    public void labelImage(String accessToken, String imageBase64) {
+        Call<JsonObject> call = mainApiUtils.labelImage(accessToken, imageBase64);
 
         call.enqueue(new Callback<JsonObject>() {
             @Override
@@ -38,6 +38,13 @@ public class LabelImageViewModel extends ViewModel {
                                 imageBase64,
                                 response.body().get("word").toString(),
                                 response.body().get("description").toString()
+                        )));
+                    }
+                }
+                else if (response.code() == 403) {
+                    if (response.body() == null) {
+                        result.postValue(new Result.Error<>(new Exception(
+                                "403"
                         )));
                     }
                 }

@@ -42,7 +42,7 @@ public class LoginViewModel extends ViewModel {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 if (response.code() == 200) {
-                    result.postValue(new Result.Success<>(response.body() == null? "???": response.body().get("name").toString()));
+                    result.postValue(new Result.Success<>(response.body() == null? "???": response.body().get("access_token").toString()));
                 }
                 else {
                     result.postValue(new Result.Error(new Exception(response.body() == null ? "Error encountered. Please try again!" : response.body().get("message").toString())));

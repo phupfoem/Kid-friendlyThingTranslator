@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.main.R;
 import com.example.main.data.model.ImageDescription;
 import com.example.main.data.model.Item;
+import com.example.main.data.preference.Preference;
 import com.example.main.data.model.Result;
 import com.example.main.util.ImageConverterUtil;
 import com.example.main.viewmodel.LabelImageViewModel;
@@ -28,6 +29,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class CameraActivity extends AppCompatActivity {
+    Preference preference;
+
     private final String dir_str = "history";
     private ArrayList<Item> items;
 
@@ -39,6 +42,8 @@ public class CameraActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+
+        preference = new Preference(this, Preference.PREFERENCE_NAME);
 
         // Get all history items
         File dir = new File(this.getFilesDir().getAbsolutePath() + "/" + dir_str);
@@ -55,10 +60,20 @@ public class CameraActivity extends AppCompatActivity {
         labelImageViewModel = new ViewModelProvider(this).get(LabelImageViewModel.class);
 
         labelImageViewModel.getResult().observe(this, result -> {
-            if (result instanceof Result.Error){
-                Toast.makeText(this,
-                        ((Result.Error<ImageDescription>) result).getError().getMessage(), Toast.LENGTH_SHORT
-                ).show();
+            if (result instanceof Result.Error) {
+                String message = ((Result.Error<ImageDescription>) result).getError().getMessage();
+
+                // 403 encountered, go back to Login Activity
+                if (message.equals("403")) {
+                    Intent intent = new Intent(this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                    Toast.makeText(this, "Session ended.", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+                }
             }
             else if (result instanceof Result.Success) {
                 Result.Success<ImageDescription> success = (Result.Success<ImageDescription>) result;
@@ -80,7 +95,7 @@ public class CameraActivity extends AppCompatActivity {
 
         btn = (Button) findViewById(R.id.button);
         btn.setText("Take picture");
-        Toast.makeText(this,this.getFilesDir().getAbsolutePath(),Toast.LENGTH_LONG).show();
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,7 +121,7 @@ public class CameraActivity extends AppCompatActivity {
             String imageBase64 = ImageConverterUtil.BitMapToString(b);
 
             // Send to server to label
-            labelImageViewModel.labelImage(imageBase64);
+            labelImageViewModel.labelImage(preference.getAccessToken(), imageBase64);
         }
     }
 

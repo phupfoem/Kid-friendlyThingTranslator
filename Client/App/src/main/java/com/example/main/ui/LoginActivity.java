@@ -15,9 +15,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.main.R;
 import com.example.main.data.model.Result;
+import com.example.main.data.preference.Preference;
 import com.example.main.viewmodel.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
+    Preference preference;
+
     LoginViewModel loginViewModel;
 
     private EditText emailEditText;
@@ -32,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        preference = new Preference(this, Preference.PREFERENCE_NAME);
 
         // Make a login view model
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
@@ -95,7 +99,10 @@ public class LoginActivity extends AppCompatActivity {
                 loginBtn.setVisibility(View.VISIBLE);
             }
             else if (result instanceof Result.Success) {
-                Toast.makeText(this, ((Result.Success) result).getData().toString(), Toast.LENGTH_SHORT).show();
+                String accessToken = ((Result.Success) result).getData().toString();
+                accessToken = accessToken.substring(1, accessToken.length()-1);
+
+                preference.setAccessToken(accessToken);
 
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);

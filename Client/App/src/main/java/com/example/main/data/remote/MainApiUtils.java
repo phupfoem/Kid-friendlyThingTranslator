@@ -37,7 +37,7 @@ public class MainApiUtils {
         return apiService.signup(new UserSignupSchema(email, password, name));
     }
 
-    public Call<JsonObject> labelImage(String imageBase64) {
-        return apiService.labelImage(imageBase64);
+    public Call<JsonObject> labelImage(String accessToken, String imageBase64) {
+        return apiService.labelImage("Bearer " + accessToken, imageBase64);
     }
 }

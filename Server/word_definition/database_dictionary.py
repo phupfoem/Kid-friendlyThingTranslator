@@ -1,6 +1,8 @@
 from word_definition.dictionary import Dictionary
 
-import json
+from mysql.connector.errors import OperationalError, ProgrammingError
+
+import logging
 
 
 class DatabaseDictionary(Dictionary):
@@ -16,6 +18,13 @@ class DatabaseDictionary(Dictionary):
 
             cursor.execute(sql, param)
 
-            return cursor.fetchone()[0]
-        except TypeError:
+            result = cursor.fetchone()
+            cursor.close()
+
+            if result is None:
+                return ""
+
+            return result[0]
+        except (OperationalError, ProgrammingError) as e:
+            logging.warning("MySQLError during execute statement \n\tArgs: %s", str(e.args))
             return ""

@@ -36,7 +36,7 @@ class ImageLabeler:
                 class_id = np.argmax(scores)
                 confidence = scores[class_id]
 
-                # filter out weak predictions by ensuring the detected probability is greater than the minimum probability
+                # filter out weak predictions
                 if confidence > min_confidence:
                     argmax_class_id = class_id
 

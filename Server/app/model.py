@@ -10,7 +10,3 @@ class UserSignupSchema(BaseModel):
 class UserLoginSchema(BaseModel):
     email: str = Field(...)
     password: str = Field(...)
-
-#
-# class ImageSchema(BaseModel):
-#     image: bytearray

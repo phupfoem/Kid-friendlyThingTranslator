@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface MainApiService {
@@ -16,5 +17,5 @@ public interface MainApiService {
     Call<JsonObject> signup(@Body UserSignupSchema user);
 
     @POST("/label-image")
-    Call<JsonObject> labelImage(@Body String image);
+    Call<JsonObject> labelImage(@Header("Authorization") String accessToken, @Body String image);
 }
