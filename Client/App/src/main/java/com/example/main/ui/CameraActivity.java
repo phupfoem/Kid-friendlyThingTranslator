@@ -84,7 +84,7 @@ public class CameraActivity extends AppCompatActivity {
                         success.getData().getImageBase64(),
                         success.getData().getLabel(),
                         success.getData().getDefinition(),
-                        true)
+                        false)
                 );
 
                 this.writeListItemToFilename(items, dir_str);
