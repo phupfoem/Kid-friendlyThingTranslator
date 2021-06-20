@@ -11,7 +11,7 @@
     <LinearLayout
         android:padding="50dp"
         android:layout_width="match_parent"
-        android:layout_marginTop="130dp"
+        android:layout_marginTop="190dp"
         android:orientation="vertical"
         android:layout_height="wrap_content"
         android:gravity="center">
@@ -26,7 +26,7 @@
             android:textColor="@color/white"
             app:backgroundTint="#03A9F4" />
 
-        <Button
+        <!--<Button
             android:id="@+id/recwords"
             android:layout_width="350dp"
             android:layout_height="50dp"
@@ -34,7 +34,7 @@
             android:background="@color/dim_blue"
             android:padding="10dp"
             android:textColor="@color/white"
-            app:backgroundTint="#03A9F4" />
+            app:backgroundTint="#03A9F4" />-->
 
         <Button
             android:id="@+id/historysearch"
