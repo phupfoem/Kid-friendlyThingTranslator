@@ -4,6 +4,7 @@ package com.example.main.ui;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -45,6 +46,8 @@ public class TextToSpeechActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.textView2);
         textView.setText(item.getLabel());
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                getResources().getDimension(R.dimen.textsize));
 
         textDes = (TextView) findViewById(R.id.textView3);
         textDes.setText(item.getDescription());

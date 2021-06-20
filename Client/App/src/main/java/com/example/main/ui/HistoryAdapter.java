@@ -49,7 +49,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         Item item = items.get(position);
 
         holder.name.setText(item.getLabel());
-        holder.description.setText(item.getDescription());
+
         holder.image.setImageBitmap(ImageConverterUtil.StringToBitMap(item.getImage()));
         if(!item.getFavorite()){
             holder.favorite.setText("Favorite");
@@ -168,7 +168,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final View view;
         public final TextView name;
-        public final TextView description;
+
         public final ImageView image;
         public final Button favorite;
         public final Button delete;
@@ -178,7 +178,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             super(view);
             this.view = view;
             name = view.findViewById(R.id.item_name);
-            description = view.findViewById(R.id.item_description);
+
             image = view.findViewById(R.id.item_image);
             favorite = view.findViewById(R.id.favorite_button);
             delete = view.findViewById(R.id.delete_button);
