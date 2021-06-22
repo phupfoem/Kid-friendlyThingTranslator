@@ -21,8 +21,8 @@
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:text="User Login"
-            android:textSize="30dp"
+            android:text="@string/user_login_title"
+            android:textSize="30sp"
             android:textColor="@color/black"
             android:layout_marginTop="0dp"
             android:layout_gravity="center">
@@ -36,9 +36,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:inputType="textEmailAddress"
-            android:drawableLeft="@drawable/ic_baseline_account_circle_24"
-            android:hint="User name"
-            android:background="@drawable/edittext"/>
+            android:drawableStart="@drawable/ic_baseline_account_circle_24"
+            android:hint="@string/email_hint"
+            android:background="@drawable/edittext"
+            android:autofillHints="emailAddress" />
+
         <EditText
             android:layout_marginTop="20dp"
             android:id="@+id/password"
@@ -46,10 +48,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:inputType="textPassword"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
-            android:hint="Password"
+            android:drawableStart="@drawable/ic_baseline_lock_24"
+            android:hint="@string/password_hint"
             android:textColor="@color/black"
-            android:background="@drawable/edittext"/>
+            android:background="@drawable/edittext"
+            android:autofillHints="password" />
 
         <Button
             android:id="@+id/login"
@@ -57,46 +60,39 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            app:backgroundTint="@color/dim_blue"/>
+            android:text="@string/log_in_btn_text"
+            app:backgroundTint="@color/dim_blue" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
-            <EditText
-                android:id="@+id/editTextTextPersonName2"
-                android:layout_width="164dp"
-                android:layout_height="25dp"
-                android:layout_marginBottom="16dp"
-                android:background="@android:color/transparent"
-                android:breakStrategy="balanced"
-                android:clickable="false"
-                android:ems="10"
-                android:enabled="false"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:gravity="left"
-                android:inputType="textPersonName"
+
+            <TextView
+                android:id="@+id/signupHere"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="start"
                 android:text="@string/signupHere"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.348"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="56dp"
-                android:layout_marginBottom="16dp"
                 android:text="@string/signup"
                 android:textColor="@color/main_theme"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.195"
-                app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2" />
+                app:layout_constraintStart_toEndOf="@+id/signupHere"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

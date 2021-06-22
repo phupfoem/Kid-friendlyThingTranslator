@@ -13,6 +13,7 @@ import com.google.gson.JsonObject;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.internal.EverythingIsNonNull;
 
 public class LoginViewModel extends ViewModel {
     public final String EMAIL_ERROR_MSG = "Invalid email";
@@ -36,26 +37,48 @@ public class LoginViewModel extends ViewModel {
         }
     }
 
+    public void checkToken(String accessToken) {
+        Call<JsonObject> call = mainApiUtils.checkToken(accessToken);
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            @EverythingIsNonNull
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    result.postValue(new Result.Success<>(response.body().get("access_token").toString()));
+                }
+                else {
+                    result.postValue(new Result.Error<>(new Exception(response.body() == null ? "Error encountered. Please try again!" : response.body().get("message").toString())));
+                }
+            }
+
+            @Override
+            @EverythingIsNonNull
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                result.postValue(new Result.Error<>(new Exception(t.getMessage())));
+            }
+        });
+    }
+
     public void login(String email, String password) {
         Call<JsonObject> call = mainApiUtils.login(email, password);
         call.enqueue(new Callback<JsonObject>() {
             @Override
+            @EverythingIsNonNull
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                if (response.code() == 200) {
-                    result.postValue(new Result.Success<>(response.body() == null? "???": response.body().get("access_token").toString()));
+                if (response.isSuccessful() && response.body() != null) {
+                    result.postValue(new Result.Success<>(response.body().get("access_token").toString()));
                 }
                 else {
-                    result.postValue(new Result.Error(new Exception(response.body() == null ? "Error encountered. Please try again!" : response.body().get("message").toString())));
+                    result.postValue(new Result.Error<>(new Exception(response.body() == null ? "Error encountered. Please try again!" : response.body().get("message").toString())));
                 }
             }
 
             @Override
+            @EverythingIsNonNull
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                result.postValue(new Result.Error(new Exception(t.getMessage())));
+                result.postValue(new Result.Error<>(new Exception(t.getMessage())));
             }
         });
-
-
     }
 
     @NonNull

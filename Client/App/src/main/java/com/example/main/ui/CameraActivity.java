@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.main.R;
 import com.example.main.data.model.ImageDescription;
 import com.example.main.data.model.Item;
-import com.example.main.data.preference.Preference;
+import com.example.main.data.preferences.GlobalPreferences;
 import com.example.main.data.model.Result;
 import com.example.main.util.ImageConverterUtil;
 import com.example.main.viewmodel.LabelImageViewModel;
@@ -29,7 +29,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class CameraActivity extends AppCompatActivity {
-    Preference preference;
+    GlobalPreferences preferences;
 
     private final String dir_str = "history";
     private ArrayList<Item> items;
@@ -43,7 +43,7 @@ public class CameraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
 
-        preference = new Preference(this, Preference.PREFERENCE_NAME);
+        preferences = new GlobalPreferences(this, GlobalPreferences.PREFERENCE_NAME);
 
         // Get all history items
         File dir = new File(this.getFilesDir().getAbsolutePath() + "/" + dir_str);
@@ -121,7 +121,7 @@ public class CameraActivity extends AppCompatActivity {
             String imageBase64 = ImageConverterUtil.BitMapToString(b);
 
             // Send to server to label
-            labelImageViewModel.labelImage(preference.getAccessToken(), imageBase64);
+            labelImageViewModel.labelImage(preferences.getAccessToken(), imageBase64);
         }
     }
 

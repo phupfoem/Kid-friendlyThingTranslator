@@ -7,10 +7,11 @@ import com.google.gson.JsonObject;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.internal.EverythingIsNonNull;
 
 public class MainApiUtils {
     private MainApiUtils(){}
-    public static final String BASE_URL = "http://192.168.1.11:8000/"; //Resources.getSystem().getString(R.string.base_url);
+    public static final String BASE_URL = "http://[2402:800:63a7:972c:c527:6c0e:61e3:4a21]:8000/";
     private static final MainApiService apiService = new Retrofit.Builder()
                                             .baseUrl(BASE_URL)
                                             .addConverterFactory(GsonConverterFactory.create())
@@ -19,9 +20,9 @@ public class MainApiUtils {
 
     private static MainApiUtils instance = null;
     public static MainApiUtils getInstance(){
-        if (instance == null){
-            synchronized (MainApiUtils.class){
-                if (instance == null){
+        if (instance == null) {
+            synchronized (MainApiUtils.class) {
+                if (instance == null) {
                     instance = new MainApiUtils();
                 }
             }
@@ -29,15 +30,23 @@ public class MainApiUtils {
         return instance;
     }
 
+    @EverythingIsNonNull
+    public Call<JsonObject> checkToken(String accessToken) {
+        return apiService.checkToken(accessToken);
+    }
+
+    @EverythingIsNonNull
     public Call<JsonObject> login(String email, String password) {
         return apiService.login(new UserLoginSchema(email, password));
     }
 
+    @EverythingIsNonNull
     public Call<JsonObject> signup(String name, String email, String password) {
         return apiService.signup(new UserSignupSchema(email, password, name));
     }
 
+    @EverythingIsNonNull
     public Call<JsonObject> labelImage(String accessToken, String imageBase64) {
-        return apiService.labelImage("Bearer " + accessToken, imageBase64);
+        return apiService.labelImage(accessToken, imageBase64);
     }
 }

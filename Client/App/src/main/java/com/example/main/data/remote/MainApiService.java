@@ -10,6 +10,9 @@ import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface MainApiService {
+    @POST("/check-token")
+    Call<JsonObject> checkToken(@Header("Authorization") String accessToken);
+
     @POST("/user/login")
     Call<JsonObject> login(@Body UserLoginSchema user);
 

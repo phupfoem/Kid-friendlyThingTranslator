@@ -15,11 +15,11 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.main.R;
 import com.example.main.data.model.Result;
-import com.example.main.data.preference.Preference;
+import com.example.main.data.preferences.GlobalPreferences;
 import com.example.main.viewmodel.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
-    Preference preference;
+    GlobalPreferences globalPreferences;
 
     LoginViewModel loginViewModel;
 
@@ -35,16 +35,28 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        preference = new Preference(this, Preference.PREFERENCE_NAME);
+        initialize();
 
-        // Make a login view model
+        addListenerToView();
+
+        checkPacketsFromServer();
+
+        tryLoginUsingStoredToken();
+    }
+
+    private void initialize() {
+        globalPreferences = new GlobalPreferences(this, GlobalPreferences.PREFERENCE_NAME);
+
         loginViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
 
-        // Get email and password edit text
-        emailEditText = (EditText) findViewById(R.id.email);
-        passwordEditText = (EditText) findViewById(R.id.password);
+        emailEditText = findViewById(R.id.email);
+        passwordEditText = findViewById(R.id.password);
+        loginBtn = findViewById(R.id.login);
 
-        // Add  listener
+        signupTextView = findViewById(R.id.signup);
+    }
+
+    private void addListenerToView() {
         TextWatcher afterTextChangedListener = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -54,24 +66,29 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                loginViewModel.loginDataChange(emailEditText.getText().toString(),
+                loginViewModel.loginDataChange(
+                        emailEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }
         };
+
         emailEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
 
-
-        // Get login button and login logic
-        loginBtn = (Button)findViewById(R.id.login);
-        loginBtn.setText(getString(R.string.login_btn));
         loginBtn.setOnClickListener(v -> {
-            loginViewModel.login(emailEditText.getText().toString(),
+            loginViewModel.login(
+                    emailEditText.getText().toString(),
                     passwordEditText.getText().toString());
             loginBtn.setVisibility(View.INVISIBLE);
         });
 
-        // Check packet from server
+        signupTextView.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void checkPacketsFromServer() {
         loginViewModel.getDataValid().observe(this, loginDataState -> {
             if (loginDataState == null){
                 loginBtn.setEnabled(false);
@@ -95,33 +112,23 @@ public class LoginActivity extends AppCompatActivity {
 
         loginViewModel.getResult().observe(this, result -> {
             if (result instanceof Result.Error){
-                Toast.makeText(this, ((Result.Error) result).getError().getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, ((Result.Error<String>) result).getError().getMessage(), Toast.LENGTH_SHORT).show();
                 loginBtn.setVisibility(View.VISIBLE);
             }
             else if (result instanceof Result.Success) {
-                String accessToken = ((Result.Success) result).getData().toString();
-                accessToken = accessToken.substring(1, accessToken.length()-1);
+                String accessToken = ((Result.Success<String>) result).getData();
+                accessToken = "Bearer " + accessToken.substring(1, accessToken.length()-1);
 
-                preference.setAccessToken(accessToken);
+                globalPreferences.setAccessToken(accessToken);
 
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
-
-
-        // Get sign up button, on click, go to sign-up activity
-        signupTextView = (TextView) findViewById(R.id.signup);
-        signupTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
-
+    private void tryLoginUsingStoredToken() {
+        loginViewModel.checkToken(globalPreferences.getAccessToken());
+    }
 }

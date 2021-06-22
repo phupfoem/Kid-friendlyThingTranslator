@@ -126,7 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/signupHere"
                 android:layout_width="164dp"
                 android:layout_height="25dp"
                 android:layout_marginBottom="16dp"
@@ -159,7 +159,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.195"
-                app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName2" />
+                app:layout_constraintStart_toEndOf="@+id/signupHere" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
