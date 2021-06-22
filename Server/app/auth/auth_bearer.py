@@ -32,6 +32,8 @@ import logging
 
 
 class JWTBearer(HTTPBearer):
+    SCHEME: str = 'Bearer'
+
     def __init__(self, auto_error: bool = True):
         super().__init__(auto_error=auto_error)
 
@@ -42,8 +44,8 @@ class JWTBearer(HTTPBearer):
 
         logging.debug("Credentials: " + str(credentials))
         if credentials:
-            if not credentials.scheme == "Bearer":
-                logging.debug("Scheme not supported, please use scheme " + "Bearer")
+            if not credentials.scheme == self.SCHEME:
+                logging.debug(' '.join(["Scheme not supported, please use scheme", self.SCHEME]))
                 raise HTTPException(status_code=403, detail="Invalid authentication scheme.")
             if not self.verify_jwt(credentials.credentials):
                 logging.debug("Invalid token, need to log in again")

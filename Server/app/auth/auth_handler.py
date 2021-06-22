@@ -30,25 +30,25 @@ import jwt
 
 import time
 
-from typing import Dict, Optional
+from typing import Dict, Optional, Union
 
 
 __jwt_secret = env_accessor.key_to_encrypt
 __jwt_algo = env_accessor.algorithm_to_encrypt
 
 
-def token_response(token: bytes):
+def token_response(token: Union[bytes, str]):
     logging.debug("Token JSON-ified")
     return {
-        "access_token": token
+        'access_token': token
     }
 
 
 def sign_jwt(sth: str) -> Dict[str, bytes]:
     logging.debug("Generate a token")
     payload = {
-        "data": sth,
-        "exp": time.time() + 60 * 60 * 24
+        'data': sth,
+        'exp': time.time() + 60 * 60 * 24
     }
     token = jwt.encode(payload, __jwt_secret, algorithm=__jwt_algo)
 
@@ -60,6 +60,6 @@ def decode_jwt(token: str) -> Optional[dict]:
         logging.debug("Try decoding jwt")
 
         return jwt.decode(token, __jwt_secret, algorithms=[__jwt_algo], require=["exp"], verify_exp=True)
-    except:
+    except jwt.PyJWTError:
         logging.warning("Decoding failed")
         return None

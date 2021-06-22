@@ -2,16 +2,10 @@ from .api_helper import ApiHelper
 from .model import *
 
 from .auth.auth_bearer import JWTBearer
-from .auth.auth_handler import sign_jwt
+from .auth.auth_handler import sign_jwt, decode_jwt, token_response
 
-from fastapi import Body, Depends, FastAPI
+from fastapi import Body, Depends, Header, FastAPI
 from fastapi import HTTPException
-
-import logging
-
-
-logging.basicConfig(level=logging.INFO)
-
 
 # REST-ful API server
 app = FastAPI()
@@ -33,15 +27,28 @@ async def create_user(user: UserSignupSchema = Body(...)) -> dict:
 
 @app.post("/user/login")
 async def user_login_body(user: UserLoginSchema = Body(...)) -> dict:
-    if api_helper.is_user_exist(user):
+    if api_helper.is_user_login_info_exist(user):
         return {
             **sign_jwt(user.email),
             **{
-                'name': api_helper.get_user_name(user)
+                'name': api_helper.get_user_name(user.email)
             }
         }
 
-    raise HTTPException(status_code=401, detail="Wrong email/password.")
+    raise HTTPException(status_code=401, detail="Email has already been used")
+
+
+@app.post("/check-token", dependencies=[Depends(JWTBearer())])
+async def check_token(authorization: str = Header(None)) -> dict:
+    token = authorization.split(' ')[1]
+    email = decode_jwt(token)['data']
+
+    return {
+        **token_response(token),
+        **{
+              'name': api_helper.get_user_name(email)
+        }
+    }
 
 
 @app.post("/label-image", dependencies=[Depends(JWTBearer())])

@@ -128,7 +128,7 @@ class ApiHelper:
         except Exception as e:
             logging.error("Failed to load a Database Dictionary: %s", str(e))
 
-    def is_user_exist(self, data: UserLoginSchema) -> bool:
+    def is_user_login_info_exist(self, data: UserLoginSchema) -> bool:
         cursor = self._db_conns[self.DbId.User].cursor()
 
         sql = "SELECT email FROM Accounts WHERE email = %s AND passphrase = %s"
@@ -138,11 +138,11 @@ class ApiHelper:
 
         return cursor.fetchone() is not None
 
-    def get_user_name(self, data: UserLoginSchema) -> str:
+    def get_user_name(self, email: str) -> str:
         cursor = self._db_conns[self.DbId.User].cursor()
 
-        sql = "SELECT name FROM Accounts WHERE email = %s AND passphrase = %s"
-        param = (data.email, data.password)
+        sql = "SELECT name FROM Accounts WHERE email = %s"
+        param = (email,)
 
         cursor.execute(sql, param)
 
