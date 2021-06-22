@@ -8,6 +8,8 @@ from typing import Optional
 class __EnvAccessor:
     _dotenv_file: str = dotenv.find_dotenv()
 
+    _log_mode: str = 'LOG_MODE'
+
     _key_to_encrypt: str = 'KEY_ENCRYPT'
     _algorithm_to_encrypt: str = 'ALGORITHM_ENCRYPT'
 
@@ -37,7 +39,15 @@ class __EnvAccessor:
         dotenv.set_key(self._dotenv_file, key, value)
 
     @property
-    def key_to_encrypt(self) -> Optional[str]:
+    def log_mode(self) -> str:
+        return decouple.config(self._log_mode)
+
+    @log_mode.setter
+    def log_mode(self, value: str):
+        self._set_env(self._log_mode, value)
+
+    @property
+    def key_to_encrypt(self) -> str:
         return decouple.config(self._key_to_encrypt)
     
     @key_to_encrypt.setter
@@ -45,7 +55,7 @@ class __EnvAccessor:
         self._set_env(self._key_to_encrypt, value)
 
     @property
-    def algorithm_to_encrypt(self) -> Optional[str]:
+    def algorithm_to_encrypt(self) -> str:
         return decouple.config(self._algorithm_to_encrypt)
 
     @algorithm_to_encrypt.setter
@@ -53,7 +63,7 @@ class __EnvAccessor:
         self._set_env(self._algorithm_to_encrypt, value)
 
     @property
-    def host_database(self) -> Optional[str]:
+    def host_database(self) -> str:
         return decouple.config(self._host_database)
     
     @host_database.setter
@@ -61,7 +71,7 @@ class __EnvAccessor:
         self._set_env(self._host_database, value)
 
     @property
-    def username_database(self) -> Optional[str]:
+    def username_database(self) -> str:
         return decouple.config(self._username_database)
     
     @username_database.setter
@@ -69,7 +79,7 @@ class __EnvAccessor:
         self._set_env(self._username_database, value)
     
     @property
-    def password_database(self) -> Optional[str]:
+    def password_database(self) -> str:
         return decouple.config(self._password_database)
 
     @password_database.setter
@@ -77,7 +87,7 @@ class __EnvAccessor:
         self._set_env(self._password_database, value)
     
     @property
-    def database_user(self) -> Optional[str]:
+    def database_user(self) -> str:
         return decouple.config(self._database_user)
 
     @database_user.setter
@@ -85,7 +95,7 @@ class __EnvAccessor:
         self._set_env(self._database_user, value)
 
     @property
-    def database_dictionary(self) -> Optional[str]:
+    def database_dictionary(self) -> str:
         return decouple.config(self._database_dictionary)
 
     @database_dictionary.setter
@@ -93,7 +103,7 @@ class __EnvAccessor:
         self._set_env(self._database_dictionary, value)
 
     @property
-    def path_yolov3_names(self) -> Optional[str]:
+    def path_yolov3_names(self) -> str:
         return decouple.config(self._path_yolov3_names)
 
     @path_yolov3_names.setter
@@ -101,7 +111,7 @@ class __EnvAccessor:
         self._set_env(self._path_yolov3_names, value)
 
     @property
-    def path_yolov3_config(self) -> Optional[str]:
+    def path_yolov3_config(self) -> str:
         return decouple.config(self._path_yolov3_config)
 
     @path_yolov3_config.setter
@@ -109,7 +119,7 @@ class __EnvAccessor:
         self._set_env(self._path_yolov3_config, value)
 
     @property
-    def path_yolov3_weights(self) -> Optional[str]:
+    def path_yolov3_weights(self) -> str:
         return decouple.config(self._path_yolov3_weights)
 
     @path_yolov3_weights.setter
@@ -117,7 +127,7 @@ class __EnvAccessor:
         self._set_env(self._path_yolov3_weights, value)
 
     @property
-    def path_json_opted(self) -> Optional[str]:
+    def path_json_opted(self) -> str:
         return decouple.config(self._path_json_opted)
 
     @path_json_opted.setter
@@ -125,7 +135,7 @@ class __EnvAccessor:
         self._set_env(self._path_json_opted, value)
 
     @property
-    def path_json_definition_all_word(self) -> Optional[str]:
+    def path_json_definition_all_word(self) -> str:
         return decouple.config(self._path_json_definition_all_word)
 
     @path_json_definition_all_word.setter
@@ -133,7 +143,7 @@ class __EnvAccessor:
         self._set_env(self._path_json_definition_all_word, value)
 
     @property
-    def path_json_definition_common_word(self) -> Optional[str]:
+    def path_json_definition_common_word(self) -> str:
         return decouple.config(self._path_json_definition_common_word)
 
     @path_json_definition_common_word.setter
@@ -141,7 +151,7 @@ class __EnvAccessor:
         self._set_env(self._path_json_definition_common_word, value)
 
     @property
-    def google_credential(self) -> Optional[str]:
+    def google_credential(self) -> str:
         return decouple.config(self._google_credential)
 
     @google_credential.setter
