@@ -99,7 +99,13 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                                 break;
                             }
                         }
-                        oitems.remove(position);
+                        //oitems.remove(position);
+                        for (int i = 0; i < oitems.size();i++){
+                            if (oitems.get(i).equals(item)){
+                                oitems.remove(i);
+                                break;
+                            }
+                        }
                         items.remove(position);
                         notifyDataSetChanged();
                         //Intent refresh = new Intent(context, FavoriteActivity.class);
@@ -163,7 +169,13 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                                 break;
                             }
                         }
-                        oitems.remove(position);
+                        //oitems.remove(position);
+                        for (int i = 0; i < oitems.size();i++){
+                            if (oitems.get(i).equals(item)){
+                                oitems.remove(i);
+                                break;
+                            }
+                        }
                         items.remove(position);
                         notifyDataSetChanged();
                         //Intent refresh = new Intent(context, FavoriteActivity.class);
