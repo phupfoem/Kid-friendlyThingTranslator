@@ -49,22 +49,28 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
         Item item = items.get(position);
 
         holder.name.setText(item.getLabel());
-        holder.description.setText(item.getDescription());
+
         holder.image.setImageBitmap(ImageConverterUtil.StringToBitMap(item.getImage()));
         if(!item.getFavorite()){
             holder.favorite.setText("Favorite");
             holder.favorite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    for (int i = 0; i < oitems.size();i++){
+                        if (oitems.get(i).equals(item)){
+                            oitems.get(i).setFavorite(true);
+                            break;
+                        }
+                    }
                     items.get(position).setFavorite(true);
-                    oitems.get(position).setFavorite(true);
+                    //oitems.get(position).setFavorite(true);
                     String dir_str = "history";
                     File dir = new File(context.getFilesDir().getAbsolutePath() + "/history");
                     if(dir.exists()) {
                         try {
                             FileOutputStream fos = context.openFileOutput(dir_str, Context.MODE_PRIVATE);
                             ObjectOutputStream os = new ObjectOutputStream(fos);
-                            os.writeObject(items);
+                            os.writeObject(oitems); // change items to oitems here
                             os.close();
                             fos.close();
                         } catch (Exception e) {
@@ -83,15 +89,21 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             holder.favorite.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    for (int i = 0; i < oitems.size();i++){
+                        if (oitems.get(i).equals(item)){
+                            oitems.get(i).setFavorite(false);
+                            break;
+                        }
+                    }
                     items.get(position).setFavorite(false);
-                    oitems.get(position).setFavorite(false);
+                    //oitems.get(position).setFavorite(false);
                     String dir_str = "history";
                     File dir = new File(context.getFilesDir().getAbsolutePath() + "/history");
                     if(dir.exists()) {
                         try {
                             FileOutputStream fos = context.openFileOutput(dir_str, Context.MODE_PRIVATE);
                             ObjectOutputStream os = new ObjectOutputStream(fos);
-                            os.writeObject(items);
+                            os.writeObject(oitems); //change items to oitems here
                             os.close();
                             fos.close();
                         } catch (Exception e) {
@@ -116,13 +128,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        for (int i = 0; i < oitems.size();i++){
+                            if (oitems.get(i).equals(item)){
+                                oitems.remove(i);
+                                break;
+                            }
+                        }
                         items.remove(position);
-                        oitems.remove(position);
+                        //oitems.remove(position);
                         try {
                             String dir_str = "history";
                             FileOutputStream fos = context.openFileOutput(dir_str, Context.MODE_PRIVATE);
                             ObjectOutputStream os = new ObjectOutputStream(fos);
-                            os.writeObject(items);
+                            os.writeObject(oitems); // change items to oitems here
                             os.close();
                             fos.close();
                         }
@@ -168,7 +186,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final View view;
         public final TextView name;
-        public final TextView description;
+
         public final ImageView image;
         public final Button favorite;
         public final Button delete;
@@ -178,7 +196,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
             super(view);
             this.view = view;
             name = view.findViewById(R.id.item_name);
-            description = view.findViewById(R.id.item_description);
+
             image = view.findViewById(R.id.item_image);
             favorite = view.findViewById(R.id.favorite_button);
             delete = view.findViewById(R.id.delete_button);

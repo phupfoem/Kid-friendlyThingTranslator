@@ -54,7 +54,6 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Item item = items.get(position);
         holder.name.setText(item.getLabel());
-        holder.description.setText(item.getDescription());
         holder.image.setImageBitmap(StringToBitMap(item.getImage()));
         holder.favorite.setText("Unfavorite");
         holder.favorite.setOnClickListener(new View.OnClickListener() {
@@ -100,7 +99,13 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                                 break;
                             }
                         }
-                        oitems.remove(position);
+                        //oitems.remove(position);
+                        for (int i = 0; i < oitems.size();i++){
+                            if (oitems.get(i).equals(item)){
+                                oitems.remove(i);
+                                break;
+                            }
+                        }
                         items.remove(position);
                         notifyDataSetChanged();
                         //Intent refresh = new Intent(context, FavoriteActivity.class);
@@ -164,7 +169,13 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                                 break;
                             }
                         }
-                        oitems.remove(position);
+                        //oitems.remove(position);
+                        for (int i = 0; i < oitems.size();i++){
+                            if (oitems.get(i).equals(item)){
+                                oitems.remove(i);
+                                break;
+                            }
+                        }
                         items.remove(position);
                         notifyDataSetChanged();
                         //Intent refresh = new Intent(context, FavoriteActivity.class);
@@ -208,7 +219,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public final View view;
         public final TextView name;
-        public final TextView description;
+
         public final ImageView image;
         public final Button favorite;
         public final Button delete;
@@ -218,7 +229,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             super(view);
             this.view = view;
             name = view.findViewById(R.id.item_name);
-            description = view.findViewById(R.id.item_description);
+
             image = view.findViewById(R.id.item_image);
             favorite = view.findViewById(R.id.favorite_button);
             delete = view.findViewById(R.id.delete_button);

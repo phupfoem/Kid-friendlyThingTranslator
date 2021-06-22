@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Rec words
-        btnRec = (Button) findViewById(R.id.recwords);
-        btnRec.setText("Words of the week");
+        /*btnRec = (Button) findViewById(R.id.recwords);
+        btnRec.setText("Words of the week");*/
 
         //History search
         btnHis = (Button) findViewById(R.id.historysearch);
