@@ -11,7 +11,7 @@ import retrofit2.internal.EverythingIsNonNull;
 
 public class MainApiUtils {
     private MainApiUtils(){}
-    public static final String BASE_URL = "http://[2402:800:63a7:972c:c527:6c0e:61e3:4a21]:8000/";
+    public static final String BASE_URL = "http://[2402:800:63a7:dc74:f8a8:8655:2e14:782c]:8000/";
     private static final MainApiService apiService = new Retrofit.Builder()
                                             .baseUrl(BASE_URL)
                                             .addConverterFactory(GsonConverterFactory.create())

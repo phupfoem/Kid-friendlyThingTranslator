@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         loginViewModel.getResult().observe(this, result -> {
-            if (result instanceof Result.Error){
+            if (result instanceof Result.Error) {
                 Toast.makeText(this, ((Result.Error<String>) result).getError().getMessage(), Toast.LENGTH_SHORT).show();
                 loginBtn.setVisibility(View.VISIBLE);
             }

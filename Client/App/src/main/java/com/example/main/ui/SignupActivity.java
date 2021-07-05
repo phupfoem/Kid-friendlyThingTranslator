@@ -117,7 +117,7 @@ public class SignupActivity extends AppCompatActivity {
                 signupBtn.setVisibility(View.VISIBLE);
             }
             else if (result instanceof Result.Success) {
-                Toast.makeText(this, ((Result.Success) result).getData().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.sign_up_success_message), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);

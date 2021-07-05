@@ -39,7 +39,6 @@ public class FavoriteActivity extends AppCompatActivity {
                 list_of_item = (ArrayList<Item>)is.readObject();
                 is.close();
                 fis.close();
-                Toast.makeText(this,"1",Toast.LENGTH_LONG).show();
             }
             catch(Exception e){
                 Log.e("exception 2", Log.getStackTraceString(e));

@@ -47,7 +47,7 @@ public class LoginViewModel extends ViewModel {
                     result.postValue(new Result.Success<>(response.body().get("access_token").toString()));
                 }
                 else {
-                    result.postValue(new Result.Error<>(new Exception(response.body() == null ? "Error encountered. Please try again!" : response.body().get("message").toString())));
+                    result.postValue(new Result.Error<>(new Exception(response.body() == null ? "Token expired" : response.body().get("message").toString())));
                 }
             }
 
